@@ -356,6 +356,44 @@ pre {
     padding: 15px;
 }
 
+.hljs-keyword {
+    color: #ff7b72;
+}
+
+.hljs-string {
+    color: #a5d6ff;
+}
+
+.hljs-number {
+    color: #facc15;
+}
+
+.hljs-comment {
+    color: #9ca3af;
+    font-style: italic;
+}
+
+.hljs-function {
+    color: #d2a8ff;
+}
+
+.card p,
+.card pre,
+.card ul {
+    display: none;
+}
+
+.card.expanded p,
+.card.expanded pre,
+.card.expanded ul {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+.card h3 {
+    cursor: pointer;
+}
+
 /* RESPONSIVE ADJUSTMENTS */
 
 /* 💻 Laptop kecil */
