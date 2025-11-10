@@ -78,6 +78,34 @@ print("\\n✅ Semua fungsi List Python telah dipelajari!")`;
 //  Inisialisasi Editor
 // ===========================
 const editor = document.getElementById("editor");
+// ===========================
+// Highlight.js - Real-time syntax coloring
+// ===========================
+const highlighted = document.getElementById("highlightedCode");
+
+function updateHighlight() {
+    highlighted.innerHTML = editor.value
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;"); // escape html
+    hljs.highlightElement(highlighted);
+}
+
+// Event listener: update saat mengetik
+editor.addEventListener("input", () => {
+    updateHighlight();
+    localStorage.setItem("pythonCode", editor.value);
+});
+
+// Sinkronkan scroll
+editor.addEventListener("scroll", () => {
+    highlighted.scrollTop = editor.scrollTop;
+    highlighted.scrollLeft = editor.scrollLeft;
+});
+
+// Inisialisasi awal
+updateHighlight();
+
 const output = document.getElementById("output");
 const savedCode = localStorage.getItem("pythonCode");
 
@@ -147,3 +175,5 @@ fontSizeSelect.addEventListener("change", () => {
     editor.style.fontSize = newSize + "px";
     localStorage.setItem("editorFontSize", newSize);
 });
+
+
