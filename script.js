@@ -1,4 +1,7 @@
-const defaultCode = 
+const defaultCode = `# ============================================================
+# 📘 PRAKTIKUM PYTHON LIST LENGKAP
+# ============================================================
+
 buah = ["apel", "jeruk", "pisang", "mangga"]
 print("List buah awal:", buah)
 
@@ -97,16 +100,13 @@ editor.addEventListener("scroll", () => {
     highlighted.scrollLeft = editor.scrollLeft;
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-    const output = document.getElementById("output");
-    const savedCode = localStorage.getItem("pythonCode");
 
-    // Isi editor dari localStorage atau default
-    editor.value = savedCode || defaultCode;
+const output = document.getElementById("output");
+const savedCode = localStorage.getItem("pythonCode");
 
-    // Tampilkan langsung hasil highlight
-    updateHighlight();
-});
+editor.value = savedCode || defaultCode;
+// Inisialisasi awal
+updateHighlight();
 
 // ===========================
 //  Jalankan Program
@@ -137,7 +137,6 @@ document.getElementById("resetBtn").addEventListener("click", () => {
         editor.value = defaultCode;
         output.innerHTML = "";
         localStorage.removeItem("pythonCode");
-        updateHighlight();
     }
 });
 
@@ -174,14 +173,3 @@ fontSizeSelect.addEventListener("change", () => {
     localStorage.setItem("editorFontSize", newSize);
 });
 
-
-// ===================== INTERAKTIF CARD TEORI =====================
-document.querySelectorAll('.card h3').forEach(title => {
-    title.addEventListener('click', () => {
-        const card = title.parentElement;
-        card.classList.toggle('expanded');
-    });
-});
-document.addEventListener("DOMContentLoaded", () => {
-    hljs.highlightAll();
-});
