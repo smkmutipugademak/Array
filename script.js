@@ -97,12 +97,17 @@ editor.addEventListener("scroll", () => {
     highlighted.scrollLeft = editor.scrollLeft;
 });
 
-const output = document.getElementById("output");
-const savedCode = localStorage.getItem("pythonCode");
+document.addEventListener("DOMContentLoaded", () => {
+    const output = document.getElementById("output");
+    const savedCode = localStorage.getItem("pythonCode");
 
-editor.value = savedCode || defaultCode;
-// Inisialisasi awal
-updateHighlight();
+    // Isi editor dari localStorage atau default
+    editor.value = savedCode || defaultCode;
+
+    // Tampilkan langsung hasil highlight
+    updateHighlight();
+});
+
 // ===========================
 //  Jalankan Program
 // ===========================
