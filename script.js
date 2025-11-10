@@ -1,10 +1,4 @@
-// ============================================================
-// 🧠 PYTHON COMPILER WITH AUTOSAVE
-// ============================================================
-const defaultCode = `# ============================================================
-# 📘 PRAKTIKUM PYTHON LIST LENGKAP
-# ============================================================
-
+const defaultCode = 
 buah = ["apel", "jeruk", "pisang", "mangga"]
 print("List buah awal:", buah)
 
@@ -140,6 +134,7 @@ document.getElementById("resetBtn").addEventListener("click", () => {
         editor.value = defaultCode;
         output.innerHTML = "";
         localStorage.removeItem("pythonCode");
+        updateHighlight();
     }
 });
 
@@ -177,3 +172,13 @@ fontSizeSelect.addEventListener("change", () => {
 });
 
 
+// ===================== INTERAKTIF CARD TEORI =====================
+document.querySelectorAll('.card h3').forEach(title => {
+    title.addEventListener('click', () => {
+        const card = title.parentElement;
+        card.classList.toggle('expanded');
+    });
+});
+document.addEventListener("DOMContentLoaded", () => {
+    hljs.highlightAll();
+});
