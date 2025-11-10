@@ -1,0 +1,260 @@
+/* Modern minimal UI for Python List Lab */
+:root {
+    --bg-dark: #081225;
+    --panel: #0f1724;
+    --muted: #99a4b1;
+    --accent: #6ee7b7;
+    --primary: #0ea5a4;
+    --surface: #0b132b;
+    --card: #0f1b2b;
+    --glass: rgba(255, 255, 255, 0.03);
+}
+
+* {
+    box-sizing: border-box
+}
+
+body {
+    margin: 0;
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background: var(--bg-dark);
+    color: #e6eef3;
+    height: 100vh;
+    display: flex;
+    flex-direction: column
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 18px;
+    background: linear-gradient(90deg, #07162a, #0b2140);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03)
+}
+
+.brand h1 {
+    margin: 0;
+    font-size: 18px;
+    color: var(--accent)
+}
+
+.brand .tag {
+    display: block;
+    font-size: 12px;
+    color: var(--muted)
+}
+
+.controls {
+    display: flex;
+    gap: 8px;
+    align-items: center
+}
+
+.small {
+    font-size: 13px
+}
+
+.icon-btn {
+    background: transparent;
+    border: 0;
+    padding: 8px;
+    border-radius: 8px;
+    color: var(--muted);
+    cursor: pointer
+}
+
+.primary {
+    background: linear-gradient(90deg, #06b6d4, #3b82f6);
+    border: 0;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700
+}
+
+.secondary {
+    background: #2a3b4f;
+    border: 0;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer
+}
+
+.ghost {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    padding: 7px 10px;
+    border-radius: 8px;
+    color: var(--muted);
+    cursor: pointer
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 14px;
+    padding: 14px;
+    flex: 1;
+    overflow: hidden
+}
+
+.sidebar {
+    background: var(--panel);
+    padding: 12px;
+    border-radius: 12px;
+    overflow: auto
+}
+
+.sidebar-block {
+    margin-bottom: 12px
+}
+
+.levels {
+    display: flex;
+    flex-direction: column;
+    gap: 8px
+}
+
+.level-item {
+    padding: 10px;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.02)
+}
+
+.level-item.active {
+    background: linear-gradient(90deg, #0f3b4b, #12324a);
+    color: var(--accent);
+    border: 1px solid rgba(110, 231, 183, 0.12)
+}
+
+.list-btn {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 8px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 0;
+    color: var(--muted);
+    cursor: pointer;
+    margin-bottom: 6px
+}
+
+.main {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 14px;
+    overflow: hidden
+}
+
+.editor-area {
+    background: linear-gradient(180deg, #071425, #081424);
+    padding: 10px;
+    border-radius: 12px;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column
+}
+
+.editor {
+    height: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.03)
+}
+
+.right-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 12px
+}
+
+.panel {
+    background: var(--card);
+    padding: 10px;
+    border-radius: 10px;
+    min-height: 80px;
+    max-height: 45vh;
+    overflow: auto;
+    border: 1px solid rgba(255, 255, 255, 0.03)
+}
+
+.panel-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px
+}
+
+.output {
+    background: linear-gradient(180deg, #06121a, #071826);
+    padding: 10px;
+    border-radius: 6px;
+    min-height: 120px;
+    color: #bff6de;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace;
+    white-space: pre-wrap;
+    overflow: auto;
+    border: 1px solid rgba(255, 255, 255, 0.02)
+}
+
+.explain {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5
+}
+
+.sep {
+    width: 1px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.04);
+    margin: 0 6px;
+    border-radius: 2px
+}
+
+/* Responsive */
+@media (max-width:1000px) {
+    .layout {
+        grid-template-columns: 1fr;
+        padding: 10px
+    }
+
+    .main {
+        grid-template-columns: 1fr;
+        gap: 10px
+    }
+
+    .right-panel {
+        order: 2
+    }
+
+    .sidebar {
+        order: 3
+    }
+}
+
+/* Light theme */
+body.theme-light {
+    --bg-dark: #f4f7fb;
+    --panel: #ffffff;
+    --muted: #6b7280;
+    --accent: #0b7285;
+    --primary: #0b7285;
+    --card: #ffffff;
+    color: #0b1220;
+}
+
+body.theme-light .topbar {
+    background: linear-gradient(90deg, #ffffff, #f8fafc)
+}
+
+body.theme-light .output {
+    background: #f8fafc;
+    color: #0b1220
+}

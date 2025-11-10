@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🐍 Python Interactive Compiler - Belajar List</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <h1>🐍 Python Interactive Compiler</h1>
+        <h2>📚 Modul: List (Array) Lengkap</h2>
+
+        <!-- 🔹 Navigasi Tabs -->
+        <div class="tabs">
+            <button class="tab-button active" data-tab="praktikum">🧩 Praktikum</button>
+            <button class="tab-button" data-tab="teori">📘 Teori</button>
+        </div>
+
+        <!-- ===================== 🔹 TAB PRAKTIKUM ===================== -->
+        <div id="praktikum" class="tab-content active">
+            <div class="instructions">
+                <h3>📗 Panduan Praktikum</h3>
+                <ul>
+                    <li>Baca komentar <code># ...</code> untuk memahami langkah.</li>
+                    <li>Klik <b>▶ Jalankan</b> untuk menjalankan kode.</li>
+                    <li>Klik <b>🔁 Reset</b> untuk mengembalikan kode ke semula.</li>
+                </ul>
+            </div>
+
+            <div class="editor-section">
+                <label>💻 Kode Python:</label>
+                <textarea id="editor" spellcheck="false"></textarea>
+
+                <div class="btn-group">
+                    <button id="runBtn">▶ Jalankan Program</button>
+                    <button id="resetBtn">🔁 Reset Kode</button>
+                </div>
+            </div>
+
+            <div class="output-container">
+                <h3>📤 Output:</h3>
+                <pre id="output"></pre>
+            </div>
+        </div>
+
+        <!-- ===================== 🔹 TAB TEORI ===================== -->
+        <div id="teori" class="tab-content">
+            <div class="theory-section">
+                <div class="card">
+                    <h3>1️⃣ Pengertian List</h3>
+                    <p>List adalah struktur data yang bisa menyimpan banyak nilai sekaligus dan bisa diubah (mutable).
+                    </p>
+                    <pre><code>buah = ["apel", "jeruk", "mangga"]</code></pre>
+                </div>
+
+                <div class="card">
+                    <h3>2️⃣ Akses Elemen</h3>
+                    <pre><code>buah[0]  # apel
+buah[-1] # mangga</code></pre>
+                    <img src="https://i.ibb.co/M6fhsNp/python-index-list.png" alt="Indeks List">
+                </div>
+
+                <div class="card">
+                    <h3>3️⃣ Menambah & Menghapus</h3>
+                    <pre><code>buah.append("melon")
+buah.remove("apel")
+buah.pop()</code></pre>
+                </div>
+
+                <div class="card">
+                    <h3>4️⃣ Fungsi Umum</h3>
+                    <ul>
+                        <li><code>len()</code> → jumlah elemen</li>
+                        <li><code>count()</code> → jumlah kemunculan</li>
+                        <li><code>index()</code> → posisi pertama</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>5️⃣ List Comprehension</h3>
+                    <pre><code>kuadrat = [x**2 for x in range(1,6)]</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Skulpt & Script -->
+    <script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt-stdlib.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

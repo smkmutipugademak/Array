@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🐍 Python Interactive Compiler - Modul List Lengkap</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <h2>🐍 Python Interactive Compiler - Belajar List (Array)</h2>
+
+        <!-- 🔹 Navigasi Tabs -->
+        <div class="tabs">
+            <button class="tab-button active" data-tab="praktikum">🧩 Praktikum</button>
+            <button class="tab-button" data-tab="teori">📘 Teori</button>
+        </div>
+
+        <!-- 🔹 Bagian Praktikum -->
+        <div id="praktikum" class="tab-content active">
+            <div class="instructions">
+                <h3>📗 Panduan Praktikum:</h3>
+                <ul>
+                    <li>Baca komentar (<code># ...</code>) pada kode untuk memahami konsep.</li>
+                    <li>Kamu bisa hapus tanda <code>#</code> untuk mencoba perintah.</li>
+                    <li>Klik tombol <b>▶ Jalankan</b> untuk mengeksekusi program dan lihat hasil di bawah.</li>
+                    <li>Pelajari langkah demi langkah agar paham seluruh fungsi List Python.</li>
+                </ul>
+            </div>
+
+            <div class="editor-container">
+                <label for="editor">💻 Kode Python:</label>
+                <textarea id="editor" spellcheck="false">
+# ============================================================
+# 📘 PRAKTIKUM PYTHON LIST LENGKAP
+# ============================================================
+
+buah = ["apel", "jeruk", "pisang", "mangga"]
+print("List buah awal:", buah)
+
+# 🔹 Akses elemen
+print("Buah pertama:", buah[0])
+print("Buah terakhir:", buah[-1])
+
+# 🔹 Ubah elemen
+buah[0] = "apel hijau"
+print("Setelah diubah:", buah)
+
+# 🔹 Tambah data
+buah.append("melon")
+buah.insert(2, "anggur")
+buah.extend(["nanas", "pepaya"])
+print("Setelah ditambah:", buah)
+
+# 🔹 Hapus data
+buah.remove("jeruk")
+hapus = buah.pop()
+print("Setelah dihapus:", buah)
+print("Yang dihapus:", hapus)
+
+# 🔹 Fungsi dasar list
+angka = [2, 4, 5, 5, 10, 4]
+print("List angka:", angka)
+print("Jumlah elemen:", len(angka))
+print("Banyak angka 5:", angka.count(5))
+print("Indeks angka 4:", angka.index(4))
+
+# 🔹 Operasi list
+print("Penjumlahan list:", angka + [20, 30])
+print("Duplikasi list:", angka * 2)
+print("Apakah 4 ada di list?", 4 in angka)
+
+# 🔹 Slicing
+print("Elemen ke-2 s.d 4:", angka[1:4])
+print("Membalik urutan:", angka[::-1])
+
+# 🔹 Nested list
+kelas = [["Ani", 80], ["Budi", 90], ["Citra", 85]]
+print("Nilai Budi:", kelas[1][1])
+
+# 🔹 Looping
+print("Daftar nilai siswa:")
+for nama, nilai in kelas:
+    print("-", nama, "=", nilai)
+
+# 🔹 List comprehension
+kuadrat = [x**2 for x in range(1, 6)]
+print("Kuadrat 1–5:", kuadrat)
+
+# 🔹 Sort & Reverse
+angka2 = [9, 3, 6, 1, 7]
+angka2.sort()
+print("Urut naik:", angka2)
+angka2.reverse()
+print("Urut turun:", angka2)
+
+# 🔹 Copy dan Clear
+salinan = angka2.copy()
+salinan.append(100)
+print("Asli:", angka2)
+print("Salinan:", salinan)
+salinan.clear()
+print("Setelah clear:", salinan)
+
+# 🔹 Enumerate
+warna = ["merah", "hijau", "biru"]
+for i, w in enumerate(warna):
+    print(f"Indeks {i} = {w}")
+
+# 🔹 Split & Join
+kalimat = "belajar python sangat menyenangkan"
+kata = kalimat.split()
+print("List kata:", kata)
+gabung = " ".join(kata)
+print("Kalimat kembali:", gabung)
+
+# 🔹 Nested loop (list 2D)
+matrix = [[1,2,3],[4,5,6],[7,8,9]]
+print("Isi matrix:")
+for baris in matrix:
+    for elemen in baris:
+        print(elemen, end=" ")
+    print()
+
+print("\n✅ Semua fungsi List Python telah dipelajari!")
+        </textarea>
+            </div>
+
+            <button id="runBtn">▶ Jalankan</button>
+
+            <div class="output-container">
+                <h3>📤 Output:</h3>
+                <pre id="output"></pre>
+            </div>
+        </div>
+
+        <!-- 🔹 Bagian Teori -->
+        <div id="teori" class="tab-content">
+            <h3>📖 Teori List Python</h3>
+
+            <section>
+                <h4>1️⃣ Apa itu List?</h4>
+                <p>List adalah struktur data Python yang bisa menyimpan banyak nilai sekaligus dalam satu variabel.
+                    Ditulis menggunakan tanda <code>[ ]</code> dan elemen dipisahkan dengan koma.</p>
+                <pre><code>buah = ["apel", "jeruk", "mangga"]</code></pre>
+            </section>
+
+            <section>
+                <h4>2️⃣ Akses Elemen dan Indeks</h4>
+                <p>Indeks dimulai dari 0. Gunakan indeks negatif untuk menghitung dari belakang.</p>
+                <img src="https://i.ibb.co/M6fhsNp/python-index-list.png" alt="Indeks List" class="theory-img" />
+            </section>
+
+            <section>
+                <h4>3️⃣ Fungsi Dasar</h4>
+                <ul>
+                    <li><code>len(list)</code> → jumlah elemen</li>
+                    <li><code>max(list)</code> / <code>min(list)</code> → nilai terbesar/terkecil</li>
+                    <li><code>sum(list)</code> → total semua nilai numerik</li>
+                    <li><code>list.count(x)</code> → hitung kemunculan nilai</li>
+                    <li><code>list.index(x)</code> → cari posisi nilai</li>
+                </ul>
+            </section>
+
+            <section>
+                <h4>4️⃣ Operasi & Manipulasi</h4>
+                <pre><code>
+append(x) → tambah di akhir  
+insert(i, x) → sisipkan di posisi i  
+extend(list) → gabungkan list lain  
+remove(x) → hapus nilai  
+pop() → hapus elemen terakhir  
+clear() → kosongkan seluruh list
+        </code></pre>
+            </section>
+
+            <section>
+                <h4>5️⃣ Visualisasi Slicing</h4>
+                <img src="https://i.ibb.co/BtJZq6N/python-slicing-diagram.png" alt="Slicing Python"
+                    class="theory-img" />
+            </section>
+
+            <section>
+                <h4>6️⃣ Kesimpulan Penting</h4>
+                <ul>
+                    <li>List bersifat <b>mutable</b> → bisa diubah kapan saja.</li>
+                    <li>Gunakan slicing untuk mengambil sebagian data.</li>
+                    <li>Gunakan <code>copy()</code> untuk membuat salinan.</li>
+                    <li>Gunakan <code>sort()</code> dan <code>reverse()</code> untuk urut dan balik.</li>
+                </ul>
+            </section>
+        </div>
+    </div>
+
+    <!-- 🔹 Skrip Skulpt dan Logika -->
+    <script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt-stdlib.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

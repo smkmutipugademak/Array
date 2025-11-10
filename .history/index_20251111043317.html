@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelas Interaktif Python - Belajar List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <header>
+            <h1>🐍 Belajar Python List Interaktif</h1>
+            <p>Ubah nilai <code>number</code> di bawah ini, lalu tekan <b>Run</b> untuk melihat hasilnya.</p>
+        </header>
+
+        <section class="editor-section">
+            <div class="code-wrapper">
+                <div class="readonly-code">
+                    <pre>
+print(len(number))
+print(sum(number))
+print(max(number))
+print(min(number))
+print(number.count(5))
+print(number.index(4))
+          </pre>
+                </div>
+
+                <div class="editable-area">
+                    <label for="editable">📝 Edit di sini:</label>
+                    <textarea id="editable">number = [2, 4, 5, 5, 10]</textarea>
+                </div>
+            </div>
+
+            <button id="runBtn">▶ Jalankan Kode</button>
+        </section>
+
+        <section class="output-section">
+            <h2>💻 Hasil Output:</h2>
+            <pre id="output">Klik Jalankan untuk melihat hasil...</pre>
+        </section>
+
+        <section class="learning-section">
+            <h2>📘 Penjelasan Fungsi Python</h2>
+            <div class="info-grid">
+                <div class="card">
+                    <h3>len()</h3>
+                    <p>Menghitung jumlah elemen di dalam list.</p>
+                </div>
+                <div class="card">
+                    <h3>sum()</h3>
+                    <p>Menjumlahkan semua elemen di dalam list.</p>
+                </div>
+                <div class="card">
+                    <h3>max()</h3>
+                    <p>Menampilkan nilai terbesar di list.</p>
+                </div>
+                <div class="card">
+                    <h3>min()</h3>
+                    <p>Menampilkan nilai terkecil di list.</p>
+                </div>
+                <div class="card">
+                    <h3>count()</h3>
+                    <p>Menghitung berapa kali nilai tertentu muncul.</p>
+                </div>
+                <div class="card">
+                    <h3>index()</h3>
+                    <p>Menunjukkan posisi pertama kemunculan nilai.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>✨ Dibuat untuk pembelajaran Python dasar — by Nanda Classroom</p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.24.1/full/pyodide.mjs" type="module"></script>
+    <script type="module" src="script.js"></script>
+</body>
+
+</html>

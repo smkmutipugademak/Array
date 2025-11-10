@@ -1,0 +1,112 @@
+body {
+    background-color: #0d1117;
+    color: #c9d1d9;
+    font-family: "Fira Code", monospace;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    background-color: #161b22;
+    padding: 20px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 950px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+}
+
+h2 {
+    text-align: center;
+    color: #58a6ff;
+    margin-bottom: 10px;
+}
+
+.instructions {
+    background-color: #0d1117;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.instructions ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.instructions li {
+    margin-bottom: 6px;
+    line-height: 1.5;
+}
+
+.editor-container label {
+    display: block;
+    margin-bottom: 5px;
+    color: #79c0ff;
+}
+
+textarea {
+    width: 100%;
+    height: 650px;
+    background-color: #0d1117;
+    color: #f0f6fc;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 14px;
+    resize: none;
+    line-height: 1.5;
+}
+
+button {
+    display: block;
+    margin: 15px auto 0;
+    padding: 10px 25px;
+    border: none;
+    background-color: #238636;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: #2ea043;
+}
+
+.output-container {
+    margin-top: 20px;
+    background-color: #0d1117;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+pre {
+    color: #f0f6fc;
+    font-size: 14px;
+    white-space: pre-wrap;
+}
+
+/* Responsif */
+@media (max-width: 600px) {
+    .container {
+        width: 100%;
+        padding: 15px;
+    }
+
+    textarea {
+        height: 480px;
+        font-size: 13px;
+    }
+
+    button {
+        width: 100%;
+    }
+}

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Belajar List Python Interaktif</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Inter, Segoe UI;
+            background: #0b132b;
+            color: #e0e6ed;
+            display: flex;
+            flex-direction: column;
+            height: 100vh
+        }
+
+        header {
+            background: #1c2541;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center
+        }
+
+        header h1 {
+            font-size: 18px;
+            color: #5bc0be;
+            margin: 0
+        }
+
+        main {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            overflow: hidden
+        }
+
+        aside {
+            background: #1b1b2f;
+            padding: 14px;
+            overflow-y: auto
+        }
+
+        aside h2 {
+            font-size: 14px;
+            color: #5bc0be;
+            margin-bottom: 10px
+        }
+
+        .level {
+            margin-bottom: 10px;
+            padding: 8px;
+            background: #162447;
+            border-radius: 6px;
+            cursor: pointer
+        }
+
+        .level.active {
+            background: #1f4068
+        }
+
+        .editor-section {
+            display: flex;
+            flex-direction: column;
+            padding: 16px;
+            background: #0f172a;
+            overflow: hidden
+        }
+
+        textarea {
+            flex: 1;
+            background: #000c18;
+            color: #dff7ea;
+            border: none;
+            outline: none;
+            padding: 10px;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 14px;
+            resize: none
+        }
+
+        .controls {
+            margin-top: 10px;
+            display: flex;
+            gap: 10px
+        }
+
+        button {
+            padding: 8px 12px;
+            border: 0;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600
+        }
+
+        .run {
+            background: #5bc0be;
+            color: #fff
+        }
+
+        .explain {
+            background: #3a506b;
+            color: #fff
+        }
+
+        .next {
+            background: #6ee7b7;
+            color: #000;
+            font-weight: 700
+        }
+
+        .output {
+            background: #071017;
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 6px;
+            min-height: 100px;
+            font-family: monospace;
+            font-size: 13px;
+            white-space: pre-wrap
+        }
+
+        .guide {
+            background: #0d1b2a;
+            padding: 10px;
+            border-radius: 6px;
+            margin-top: 12px;
+            font-size: 13px;
+            line-height: 1.5;
+            color: #c7d5e0
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt-stdlib.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>🐍 Belajar Python: List Interaktif</h1>
+        <div id="progress" style="font-size:14px;color:#5bc0be">Level 1 dari 10</div>
+    </header>
+    <main>
+        <aside id="sidebar">
+            <h2>Level Pembelajaran</h2>
+            <div class="level active" onclick="loadLevel(1)">1️⃣ Dasar List</div>
+            <div class="level" onclick="loadLevel(2)">2️⃣ Akses & Indeks</div>
+            <div class="level" onclick="loadLevel(3)">3️⃣ Menambah Data (append, insert)</div>
+            <div class="level" onclick="loadLevel(4)">4️⃣ Menghapus Data (pop, remove)</div>
+            <div class="level" onclick="loadLevel(5)">5️⃣ Slicing List</div>
+            <div class="level" onclick="loadLevel(6)">6️⃣ Looping List</div>
+            <div class="level" onclick="loadLevel(7)">7️⃣ List dalam List</div>
+            <div class="level" onclick="loadLevel(8)">8️⃣ List Comprehension</div>
+            <div class="level" onclick="loadLevel(9)">9️⃣ Sort dan Reverse</div>
+            <div class="level" onclick="loadLevel(10)">🔟 Mini Project</div>
+        </aside>
+
+        <section class="editor-section">
+            <div id="guide" class="guide"></div>
+            <textarea id="editor"></textarea>
+            <div class="controls">
+                <button class="run" onclick="runCode()">▶ Jalankan</button>
+                <button class="explain" onclick="showExplain()">💡 Penjelasan</button>
+                <button class="next" onclick="nextLevel()">➡️ Lanjut</button>
+            </div>
+            <div id="output" class="output">Output akan tampil di sini...</div>
+        </section>
+    </main>
+
+    <script>
+        let currentLevel = 1;
+
+        const lessons = {
+            1: {
+                guide: "💡 **Dasar List**\nList adalah kumpulan data dalam satu variabel. Coba buat list dan cetak isinya.",
+                code: `# Level 1: Membuat list sederhana
+buah = ["apel", "pisang", "jeruk"]
+print(buah)`,
+                explain: "List ditulis menggunakan tanda kurung siku [].\nDi atas kita membuat list berisi 3 elemen string."
+            },
+            2: {
+                guide: "📚 **Akses Elemen List**\nGunakan indeks (mulai dari 0) untuk mengambil elemen tertentu.",
+                code: `buah = ["apel","pisang","jeruk"]
+print(buah[0])  # cetak elemen pertama`,
+                explain: "Indeks pertama selalu 0. Jadi buah[0] adalah 'apel'."
+            }
+        };
+
+        function loadLevel(n) {
+            currentLevel = n;
+            document.querySelectorAll('.level').forEach((el, i) => {
+                el.classList.toggle('active', (i + 1) === n);
+            });
+            document.getElementById('guide').textContent = lessons[n]?.guide || "Level belum dibuat.";
+            document.getElementById('editor').value = lessons[n]?.code || "";
+            document.getElementById('output').textContent = "Output akan tampil di sini...";
+            document.getElementById('progress').textContent = `Level ${n} dari 10`;
+        }
+
+        function nextLevel() {
+            if (currentLevel < 10) { loadLevel(currentLevel + 1); }
+        }
+
+        function showExplain() {
+            document.getElementById('output').textContent = lessons[currentLevel]?.explain || "Belum ada penjelasan.";
+        }
+
+        function outf(text) { document.getElementById("output").textContent += text; }
+        function builtinRead(x) { if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined) throw "File not found: '" + x + "'"; return Sk.builtinFiles["files"][x]; }
+
+        function runCode() {
+            const code = document.getElementById("editor").value;
+            document.getElementById("output").textContent = "";
+            Sk.configure({ output: outf, read: builtinRead });
+            Sk.misceval.asyncToPromise(() => Sk.importMainWithBody("<stdin>", false, code, true))
+                .catch(err => { document.getElementById("output").textContent = err.toString(); });
+        }
+
+        window.onload = () => loadLevel(1);
+    </script>
+</body>
+
+</html>

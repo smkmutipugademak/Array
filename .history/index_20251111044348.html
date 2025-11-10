@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Python Interactive Compiler - Modul List Lengkap</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <h2>🐍 Python Interactive Compiler - Belajar List Lengkap</h2>
+
+        <div class="instructions">
+            <h3>📘 Panduan Praktikum:</h3>
+            <ol>
+                <li>Baca setiap bagian kode Python di bawah ini — setiap blok mewakili topik dari modul.</li>
+                <li>Kamu boleh ubah nilai list atau hapus tanda komentar (<code>#</code>) untuk mencoba sendiri.</li>
+                <li>Klik <b>▶ Jalankan</b> untuk menjalankan program dan lihat hasilnya di bagian <b>Output</b>.</li>
+                <li>Eksperimen untuk memahami cara kerja fungsi list dan indeks di Python.</li>
+            </ol>
+        </div>
+
+        <div class="editor-container">
+            <label for="editor">🧩 Kode Python:</label>
+            <textarea id="editor" spellcheck="false">
+# ===================================================
+# 🧠 PRAKTIKUM PYTHON LIST (ARRAY)
+# Sesuai Modul: Rangkuman List & Array Python
+# ===================================================
+
+# 1️⃣ PENGERTIAN LIST
+buah = ["apel", "jeruk", "pisang", "mangga"]
+print("Isi list buah:", buah)
+
+# 2️⃣ MENGAKSES ELEMEN LIST
+print("Elemen pertama:", buah[0])      # indeks 0
+print("Elemen terakhir:", buah[-1])    # indeks negatif
+
+# 3️⃣ FUNGSI DASAR LIST
+print("Jumlah elemen:", len(buah))
+print("Indeks 'pisang':", buah.index("pisang"))  # mencari posisi elemen
+print("'apel' ada di list?", "apel" in buah)      # cek keanggotaan
+
+# 4️⃣ MENAMBAH, MENGUBAH, MENGHAPUS DATA
+buah.append("melon")       # tambah di akhir
+buah.insert(2, "anggur")   # sisip di indeks ke-2
+buah[0] = "apel hijau"     # ubah data
+buah.remove("jeruk")       # hapus berdasarkan nilai
+hapus = buah.pop()         # hapus terakhir dan simpan
+print("Setelah perubahan:", buah)
+print("Yang dihapus:", hapus)
+
+# 5️⃣ OPERASI PADA LIST
+angka = [1, 2, 3, 4, 5]
+print("Penjumlahan list:", angka + [6, 7])
+print("Duplikasi list:", angka * 2)
+
+# 6️⃣ SLICING (Mengambil Bagian List)
+print("Elemen ke-2 s.d ke-4:", angka[1:4])
+print("Membalik urutan:", angka[::-1])
+
+# 7️⃣ NESTED LIST
+kelas = [["Ani", 80], ["Budi", 90], ["Citra", 85]]
+print("Nilai Budi:", kelas[1][1])   # akses list di dalam list
+
+# 8️⃣ LOOPING DALAM LIST
+print("Daftar nilai siswa:")
+for siswa in kelas:
+    print(siswa[0], "=", siswa[1])
+
+# 9️⃣ LIST COMPREHENSION
+kuadrat = [x**2 for x in angka]
+print("Kuadrat angka:", kuadrat)
+
+# 🔟 PENGURUTAN DAN PEMBALIKAN
+angka_baru = [5, 2, 9, 1, 3]
+angka_baru.sort()
+print("Urutan naik:", angka_baru)
+angka_baru.reverse()
+print("Urutan terbalik:", angka_baru)
+
+# ✅ KESIMPULAN
+print("List bersifat mutable dan fleksibel di Python!")
+      </textarea>
+        </div>
+
+        <button id="runBtn">▶ Jalankan</button>
+
+        <div class="output-container">
+            <h3>📤 Output:</h3>
+            <pre id="output"></pre>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt-stdlib.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

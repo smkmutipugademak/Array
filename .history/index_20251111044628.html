@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Python Interactive Compiler - Modul List Lengkap</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <h2>🐍 Python Interactive Compiler - Modul List Lengkap</h2>
+
+        <div class="instructions">
+            <h3>📘 Panduan Praktikum:</h3>
+            <ul>
+                <li>Pelajari dan jalankan setiap bagian kode di bawah.</li>
+                <li>Kamu bisa menghapus tanda komentar (<code>#</code>) untuk mengaktifkan perintah.</li>
+                <li>Klik <b>▶ Jalankan</b> untuk mengeksekusi program dan lihat hasil di bawahnya.</li>
+                <li>Gunakan ini untuk memahami <b>semua fungsi List di Python</b>.</li>
+            </ul>
+        </div>
+
+        <div class="editor-container">
+            <label for="editor">🧩 Kode Python:</label>
+            <textarea id="editor" spellcheck="false">
+# =========================================================
+# 🌟 LATIHAN LENGKAP LIST (ARRAY) PYTHON
+# =========================================================
+
+# 1️⃣ PENGERTIAN LIST
+buah = ["apel", "jeruk", "pisang", "mangga"]
+print("List buah:", buah)
+
+# 2️⃣ MENGAKSES ELEMEN
+print("Buah pertama:", buah[0])
+print("Buah terakhir:", buah[-1])
+
+# 3️⃣ MENGUBAH ELEMEN
+buah[0] = "apel hijau"
+print("Setelah diubah:", buah)
+
+# 4️⃣ MENAMBAH DATA
+buah.append("melon")            # menambah 1 elemen di akhir
+buah.insert(2, "anggur")        # menyisipkan di indeks ke-2
+buah.extend(["nanas", "pepaya"])# menambah beberapa elemen sekaligus
+print("Setelah ditambah:", buah)
+
+# 5️⃣ MENGHAPUS DATA
+buah.remove("jeruk")     # hapus berdasarkan nilai
+hapus = buah.pop()        # hapus elemen terakhir
+print("Setelah dihapus:", buah)
+print("Yang dihapus:", hapus)
+
+# 6️⃣ MENGHITUNG & MENCARI INDEKS
+angka = [2, 4, 5, 5, 10, 4]
+print("List angka:", angka)
+print("Jumlah angka 5:", angka.count(5))
+print("Indeks angka 4:", angka.index(4))
+
+# 7️⃣ OPERASI MATEMATIKA LIST
+print("Penjumlahan list:", angka + [20, 30])
+print("Duplikasi list:", angka * 2)
+
+# 8️⃣ SLICING (MENGAMBIL BAGIAN LIST)
+print("Elemen ke-2 s.d 4:", angka[1:4])
+print("Membalik urutan:", angka[::-1])
+
+# 9️⃣ NESTED LIST (LIST DI DALAM LIST)
+kelas = [["Ani", 80], ["Budi", 90], ["Citra", 85]]
+print("Nilai Budi:", kelas[1][1])
+
+# 🔟 LOOPING DALAM LIST
+print("Daftar nilai siswa:")
+for nama, nilai in kelas:
+    print("-", nama, "=", nilai)
+
+# 11️⃣ LIST COMPREHENSION
+kuadrat = [x**2 for x in range(1, 6)]
+print("Kuadrat 1-5:", kuadrat)
+
+# 12️⃣ SORTING & REVERSING
+angka2 = [9, 3, 6, 1, 7]
+angka2.sort()     # urut naik
+print("Urut naik:", angka2)
+angka2.reverse()  # urut turun
+print("Urut turun:", angka2)
+
+# 13️⃣ COPY LIST
+angka_copy = angka2.copy()
+angka_copy.append(100)
+print("Asli:", angka2)
+print("Salinan:", angka_copy)
+
+# 14️⃣ CLEAR LIST
+angka_copy.clear()
+print("List setelah clear:", angka_copy)
+
+# 15️⃣ LOOPING DENGAN RANGE DAN ENUMERATE
+warna = ["merah", "hijau", "biru"]
+for i, w in enumerate(warna):
+    print(f"Indeks {i} = {w}")
+
+# 16️⃣ LIST DARI STRING DAN SPLIT/JOIN
+kalimat = "belajar python sangat menyenangkan"
+kata = kalimat.split()  # ubah string → list
+print("List kata:", kata)
+gabung = " ".join(kata) # ubah list → string
+print("Kalimat kembali:", gabung)
+
+# 17️⃣ NESTED LOOP UNTUK LIST 2D
+matrix = [[1,2,3],[4,5,6],[7,8,9]]
+print("Isi matrix:")
+for baris in matrix:
+    for elemen in baris:
+        print(elemen, end=" ")
+    print()
+
+# 18️⃣ MENGGUNAKAN IN & NOT IN
+print("Apakah 4 ada di angka?", 4 in angka)
+print("Apakah 11 tidak ada di angka?", 11 not in angka)
+
+# ✅ KESIMPULAN
+print("\n✅ Semua fungsi list sudah dipelajari lengkap!")
+      </textarea>
+        </div>
+
+        <button id="runBtn">▶ Jalankan</button>
+
+        <div class="output-container">
+            <h3>📤 Output:</h3>
+            <pre id="output"></pre>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt-stdlib.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

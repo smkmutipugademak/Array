@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🌐 Multi Language Interactive Compiler</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <h2>🌐 Interactive Compiler - Belajar Python, JavaScript & Kotlin</h2>
+
+        <!-- 🔹 Pilihan Bahasa -->
+        <div class="lang-select">
+            <label for="language">🗣 Pilih Bahasa Pemrograman:</label>
+            <select id="language">
+                <option value="python" selected>🐍 Python</option>
+                <option value="javascript">💛 JavaScript</option>
+                <option value="kotlin">💜 Kotlin</option>
+            </select>
+        </div>
+
+        <!-- 🔹 Tabs -->
+        <div class="tabs">
+            <button class="tab-button active" data-tab="praktikum">🧩 Praktikum</button>
+            <button class="tab-button" data-tab="teori">📘 Teori Lengkap</button>
+        </div>
+
+        <!-- ===================== TAB PRAKTIKUM ===================== -->
+        <div id="praktikum" class="tab-content active">
+            <div class="instructions">
+                <h3>📗 Panduan Praktikum:</h3>
+                <ul>
+                    <li>Pilih bahasa di atas, baca komentar kode, lalu jalankan.</li>
+                    <li>Kamu bisa ubah isi kode untuk bereksperimen.</li>
+                    <li>Klik tombol <b>▶ Jalankan</b> untuk menampilkan output.</li>
+                    <li>Gunakan eksperimenmu untuk memahami fungsi List/Array/Collection.</li>
+                </ul>
+            </div>
+
+            <div class="editor-container">
+                <label for="editor">💻 Kode:</label>
+                <textarea id="editor" spellcheck="false">
+# ===================== Python Contoh =====================
+buah = ["apel", "pisang", "mangga"]
+print("List awal:", buah)
+
+buah.append("jeruk")
+buah.insert(1, "anggur")
+print("Setelah ditambah:", buah)
+print("Jumlah elemen:", len(buah))
+print("Indeks 'mangga':", buah.index("mangga"))
+        </textarea>
+            </div>
+
+            <button id="runBtn">▶ Jalankan</button>
+
+            <div class="output-container">
+                <h3>📤 Output:</h3>
+                <pre id="output"></pre>
+            </div>
+        </div>
+
+        <!-- ===================== TAB TEORI ===================== -->
+        <div id="teori" class="tab-content">
+            <!-- ================= PYTHON ================= -->
+            <div id="theory-python" class="theory active">
+                <h3>🐍 Teori Lengkap Python - List</h3>
+
+                <section>
+                    <h4>1️⃣ Pengertian List</h4>
+                    <p>List adalah struktur data Python yang menyimpan banyak nilai dalam satu variabel. List bersifat
+                        <b>mutable</b> (dapat diubah).</p>
+                    <pre><code>buah = ["apel", "jeruk", "mangga"]</code></pre>
+                </section>
+
+                <section>
+                    <h4>2️⃣ Akses Elemen & Indeks</h4>
+                    <p>Gunakan indeks dimulai dari 0.</p>
+                    <pre><code>print(buah[0])   # apel
+print(buah[-1])  # mangga
+print(buah[1:3]) # ['jeruk', 'mangga']</code></pre>
+                    <img src="https://i.ibb.co/M6fhsNp/python-index-list.png" alt="Indeks List" class="theory-img" />
+                </section>
+
+                <section>
+                    <h4>3️⃣ Operasi Umum List</h4>
+                    <ul>
+                        <li><code>append(x)</code> → Tambah di akhir</li>
+                        <li><code>insert(i, x)</code> → Sisip di indeks ke-i</li>
+                        <li><code>extend(list2)</code> → Gabung list lain</li>
+                        <li><code>remove(x)</code> → Hapus elemen</li>
+                        <li><code>pop()</code> → Hapus terakhir</li>
+                        <li><code>count(x)</code> → Hitung jumlah</li>
+                        <li><code>index(x)</code> → Posisi elemen</li>
+                        <li><code>sort()</code> / <code>reverse()</code> → Urutkan & balik</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h4>4️⃣ Contoh Lengkap</h4>
+                    <pre><code>angka = [3,5,2,5,10]
+print(sum(angka))
+print(angka.count(5))
+print(angka.index(2))
+angka.sort()
+print("Urut:", angka)</code></pre>
+                </section>
+            </div>
+
+            <!-- ================= JAVASCRIPT ================= -->
+            <div id="theory-javascript" class="theory">
+                <h3>💛 Teori Lengkap JavaScript - Array</h3>
+
+                <section>
+                    <h4>1️⃣ Pengertian Array</h4>
+                    <p>Array menyimpan banyak data dalam satu variabel dan bisa berisi tipe data campuran.</p>
+                    <pre><code>let buah = ["apel", "jeruk", "mangga"];</code></pre>
+                </section>
+
+                <section>
+                    <h4>2️⃣ Akses & Manipulasi</h4>
+                    <pre><code>console.log(buah[0]); // apel
+buah.push("pisang");
+buah.splice(1, 0, "anggur");
+console.log(buah);</code></pre>
+                </section>
+
+                <section>
+                    <h4>3️⃣ Metode Penting</h4>
+                    <ul>
+                        <li><code>push()</code> → Tambah akhir</li>
+                        <li><code>unshift()</code> → Tambah depan</li>
+                        <li><code>splice()</code> → Sisip / hapus</li>
+                        <li><code>pop()</code> / <code>shift()</code> → Hapus</li>
+                        <li><code>includes()</code> / <code>indexOf()</code> → Cek posisi</li>
+                        <li><code>map()</code>, <code>filter()</code>, <code>reduce()</code> → Operasi data</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h4>4️⃣ Contoh Lengkap</h4>
+                    <pre><code>let angka = [2, 4, 6];
+angka.push(8);
+let total = angka.reduce((a,b) => a + b);
+console.log("Total:", total);</code></pre>
+                </section>
+            </div>
+
+            <!-- ================= KOTLIN ================= -->
+            <div id="theory-kotlin" class="theory">
+                <h3>💜 Teori Lengkap Kotlin - List & MutableList</h3>
+
+                <section>
+                    <h4>1️⃣ Jenis Koleksi</h4>
+                    <p>Kotlin punya dua jenis utama:</p>
+                    <ul>
+                        <li><b>List</b> → hanya baca</li>
+                        <li><b>MutableList</b> → bisa diubah</li>
+                    </ul>
+                    <pre><code>val angka = listOf(1,2,3)
+val ubah = mutableListOf(4,5,6)</code></pre>
+                </section>
+
+                <section>
+                    <h4>2️⃣ Operasi Dasar</h4>
+                    <pre><code>ubah.add(7)
+ubah.removeAt(1)
+println(ubah.size)
+println(ubah.contains(5))</code></pre>
+                </section>
+
+                <section>
+                    <h4>3️⃣ Fungsi Penting</h4>
+                    <ul>
+                        <li><code>add()</code> / <code>remove()</code></li>
+                        <li><code>indexOf()</code> / <code>lastIndexOf()</code></li>
+                        <li><code>sort()</code>, <code>reversed()</code></li>
+                        <li><code>filter()</code>, <code>map()</code></li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h4>4️⃣ Contoh Lengkap</h4>
+                    <pre><code>val angka = mutableListOf(3, 6, 9)
+angka.add(12)
+println("Jumlah elemen: ${angka.size}")
+println("Indeks angka 6: ${angka.indexOf(6)}")
+angka.sort()
+println(angka)</code></pre>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt-stdlib.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

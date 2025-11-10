@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Python Interactive Compiler - Eksperimen List</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <h2>🐍 Python Online Compiler: Eksperimen List</h2>
+
+        <div class="instructions">
+            <h3>📘 Panduan Praktikum:</h3>
+            <ol>
+                <li>Perhatikan kode contoh Python di bawah.</li>
+                <li>Kamu boleh mengubah **isi list** atau **menghapus tanda komentar (#)** untuk mengaktifkan perintah
+                    tertentu.</li>
+                <li>Klik tombol <b>▶ Jalankan</b> untuk mengeksekusi program dan lihat hasilnya.</li>
+                <li>Eksperimen dengan perintah <code>append()</code>, <code>insert()</code>, <code>remove()</code>,
+                    <code>extend()</code>, dan lainnya!</li>
+            </ol>
+        </div>
+
+        <div class="editor-container">
+            <label for="editor">🧩 Kode Python:</label>
+            <textarea id="editor" spellcheck="false">
+# ===========================
+# 👩‍💻 LATIHAN LIST PYTHON
+# ===========================
+number = [2, 4, 5, 5, 10]
+number_two = [13, 15]
+
+# --- FUNGSI DASAR ---
+print("Panjang list:", len(number))      # menghitung jumlah elemen
+print("Jumlah total:", sum(number))      # menjumlahkan isi list
+print("Nilai terbesar:", max(number))    # nilai maksimum
+print("Nilai terkecil:", min(number))    # nilai minimum
+print("Banyak angka 5:", number.count(5))# menghitung jumlah angka 5
+print("Posisi angka 4:", number.index(4))# mencari indeks angka 4
+print("Isi list awal:", number)
+
+# --- EKSPERIMEN TAMBAHAN ---
+# number.append(8)              # menambah 1 elemen di akhir
+# number.insert(2, 99)          # menyisipkan nilai 99 di indeks ke-2
+# number.extend(number_two)     # menggabungkan 2 list
+# number.pop()                  # menghapus elemen terakhir
+# number.remove(5)              # menghapus nilai pertama yang sama dengan 5
+# number.clear()                # menghapus semua elemen list
+
+# --- EKSPERIMEN PENGGABUNGAN & PEMOTONGAN ---
+# print(number + number_two)    # menggabungkan dua list
+# print(number * 2)             # menduplikasi list
+# print(number[2:6])            # slicing (ambil elemen indeks 2 sampai 5)
+# print(number[::-1])           # membalik urutan list
+
+# --- EKSPERIMEN LAINNYA ---
+# print(4 in number)            # cek apakah angka 4 ada dalam list
+# number_copy = number.copy()   # menyalin list
+# print(number_copy)
+
+print("Isi list akhir:", number)
+      </textarea>
+        </div>
+
+        <button id="runBtn">▶ Jalankan</button>
+
+        <div class="output-container">
+            <h3>📤 Output:</h3>
+            <pre id="output"></pre>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt-stdlib.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,214 @@
+/* Modern Python List Lab - script.js
+   Features:
+   - Ace Editor for code editing
+   - Skulpt for running Python in-browser
+   - Examples, levels, tests, save/download, theme toggle
+*/
+
+// ---------- Config & Lessons ----------
+const lessons = {
+  1: {
+    title: "Dasar List",
+    guide: "Buat list sederhana dan cetak isinya.",
+    code: `# Level 1 - Dasar List\nbuah = ['apel','pisang','jeruk']\nprint(buah)\n`,
+    explain: "List adalah koleksi berurut. Gunakan [] untuk membuat list."
+  },
+  2: {
+    title: "Akses & Indeks",
+    guide: "Ambil elemen menggunakan indeks (mulai 0).",
+    code: `buah = ['apel','pisang','jeruk']\nprint(buah[0])  # apel\nprint(buah[-1]) # jeruk\n`,
+    explain: "Indeks 0 = elemen pertama; indeks negatif menghitung dari akhir."
+  },
+  3: {
+    title: "Menambah Data (append/insert)",
+    guide: "Tambahkan elemen dengan append() atau insert().",
+    code: `nums = [1,2,3]\nnums.append(4)\nnums.insert(1,9)\nprint(nums)\n`,
+    explain: "append menambah di akhir; insert menyisipkan di indeks tertentu."
+  },
+  // ... bisa tambahkan hingga level 10
+};
+
+// ---------- DOM refs ----------
+const editorElId = "editor";
+const outEl = document.getElementById("output");
+const explainEl = document.getElementById("explain");
+const levelsEl = document.getElementById("levels");
+
+// ---------- Initialize Ace Editor ----------
+const editor = ace.edit(editorElId, {
+  mode: "ace/mode/python",
+  selectionStyle: "text",
+  theme: "ace/theme/monokai",
+});
+editor.setOptions({ fontSize: "15px", useSoftTabs: true, tabSize: 2, wrap: true });
+
+// ---------- Populate levels in sidebar ----------
+function createLevelList(){
+  levelsEl.innerHTML = "";
+  Object.keys(lessons).forEach(k=>{
+    const div = document.createElement("div");
+    div.className = "level-item";
+    div.textContent = `${k}. ${lessons[k].title}`;
+    div.dataset.level = k;
+    div.addEventListener("click", ()=> loadLevel(parseInt(k)));
+    levelsEl.appendChild(div);
+  });
+}
+createLevelList();
+
+// ---------- State ----------
+let currentLevel = 1;
+
+// ---------- Load / Save ----------
+function loadLevel(n){
+  currentLevel = n;
+  // mark active
+  document.querySelectorAll(".level-item").forEach(it=> it.classList.toggle("active", parseInt(it.dataset.level)===n));
+  const lesson = lessons[n];
+  explainEl.textContent = lesson ? `${lesson.guide}\n\n${lesson.explain}` : "Level belum tersedia.";
+  // load last saved for this level if exists
+  const saved = localStorage.getItem(`plab_level_${n}`);
+  if(saved) editor.setValue(saved, -1);
+  else editor.setValue(lesson ? lesson.code : "# Level kosong\n", -1);
+  setProgress();
+}
+
+function saveCurrent(){
+  const code = editor.getValue();
+  localStorage.setItem(`plab_level_${currentLevel}`, code);
+  flashOutput("[Saved] Code tersimpan ke localStorage.");
+}
+
+function downloadCurrent(){
+  const code = editor.getValue();
+  const blob = new Blob([code], {type: "text/x-python"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = `level-${currentLevel}-code.py`;
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+// ---------- Theme toggle ----------
+const themeToggle = document.getElementById("themeToggle");
+themeToggle.addEventListener("click", ()=> {
+  document.body.classList.toggle("theme-light");
+  const light = document.body.classList.contains("theme-light");
+  themeToggle.innerHTML = light ? '<i data-feather="moon"></i>' : '<i data-feather="sun"></i>';
+  feather.replace();
+});
+
+// ---------- Font size control ----------
+document.getElementById("fontSelect").addEventListener("change", (e)=>{
+  editor.setOptions({ fontSize: `${e.target.value}px` });
+});
+
+// ---------- Output helpers ----------
+function clearOutput(){ outEl.textContent = ""; }
+function flashOutput(msg){
+  outEl.textContent = msg;
+  setTimeout(()=> { if(outEl.textContent===msg) outEl.textContent=""; }, 2500);
+}
+document.getElementById("clearOut").addEventListener("click", ()=> clearOutput());
+
+// ---------- Skulpt runner ----------
+function outf(text){ outEl.textContent += text; }
+function builtinRead(x){
+  if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined)
+    throw "File not found: '" + x + "'";
+  return Sk.builtinFiles["files"][x];
+}
+
+function runSkulpt(code, onfinish){
+  clearOutput();
+  Sk.configure({output:outf, read:builtinRead});
+  (Sk.misceval.asyncToPromise)(function() {
+    return Sk.importMainWithBody("<stdin>", false, code, true);
+  }).then(function(mod) {
+    if(onfinish) onfinish(true);
+  }).catch(function(err) {
+    outEl.textContent += err.toString();
+    if(onfinish) onfinish(false);
+  });
+}
+
+// ---------- Tests (Check) ----------
+function getTestById(level, codeText){
+  // Simple mapping by level. Teacher can extend this function.
+  if(level === 1){
+    // Expect 'buah' variable exists and is list
+    return `
+# --- Test for Level 1 ---
+try:
+  assert isinstance(buah, list), "Variabel 'buah' harus berupa list"
+  print("TEST PASS: buah is list ->", buah)
+except Exception as e:
+  print("TEST FAIL:", e)
+`;
+  }
+  if(level === 2){
+    return `
+# --- Test for Level 2 ---
+try:
+  assert buah[0] == 'apel' or isinstance(buah[0], str), "buah[0] seharusnya 'apel' atau string"
+  print("TEST PASS: indeks 0 ->", buah[0])
+except Exception as e:
+  print("TEST FAIL:", e)
+`;
+  }
+  if(level === 3){
+    return `
+# --- Test for Level 3 ---
+try:
+  assert 4 in nums or len(nums) >= 4, "Tampaknya kamu belum menambahkan 4 di nums"
+  print("TEST PASS: nums ->", nums)
+except Exception as e:
+  print("TEST FAIL:", e)
+`;
+  }
+  // fallback: no test
+  return null;
+}
+
+function checkCode(){
+  const code = editor.getValue();
+  const test = getTestById(currentLevel, code);
+  if(!test){
+    flashOutput("Tidak ada tes otomatis untuk level ini. Jalankan Run untuk melihat output.");
+    return;
+  }
+  // combine student code + test wrapper
+  const combined = code + "\n\n" + test;
+  runSkulpt(combined, (ok)=>{
+    // after run, show explanation if any
+    const lesson = lessons[currentLevel];
+    if(lesson) explainEl.textContent = lesson.explain;
+  });
+}
+
+// ---------- Examples quick load ----------
+document.querySelectorAll(".list-btn").forEach(btn=>{
+  btn.addEventListener("click", ()=>{
+    const ex = btn.dataset.ex;
+    if(ex === "example1") editor.setValue(`# Soal 1 - append & count\nnums = [1,7,3,7]\n# Tambahkan 7 lalu cetak jumlah 7\n`, -1);
+    if(ex === "example2") editor.setValue(`# Soal 2 - slicing\nfruits = ['apel','pisang','jeruk','manggis','anggur']\nprint(fruits[1:4])\n`, -1);
+    if(ex === "example3") editor.setValue(`# Soal 3 - comprehension\nnums = [1,2,3,4]\nsquares = [x*x for x in nums]\nprint(squares)\n`, -1);
+    if(ex === "example4") editor.setValue(`# Soal 4 - nested list\ndata = [1, ['a','b','c'], 3]\nprint(data[1][1])\n`, -1);
+  });
+});
+
+// ---------- Buttons ----------
+document.getElementById("runBtn").addEventListener("click", ()=>{
+  const code = editor.getValue();
+  runSkulpt(code);
+});
+document.getElementById("checkBtn").addEventListener("click", ()=> checkCode());
+document.getElementById("saveBtn").addEventListener("click", ()=> saveCurrent());
+document.getElementById("downloadBtn").addEventListener("click", ()=> downloadCurrent());
+
+// ---------- Init ----------
+function setProgress(){
+  document.getElementById("progress").textContent = `Level ${currentLevel} dari ${Object.keys(lessons).length}`;
+}
+loadLevel(1);
+setProgress();

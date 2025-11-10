@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🐍 Python Interactive Compiler - Modul List Lengkap</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <h2>🐍 Python Interactive Compiler - Belajar List (Array) Lengkap</h2>
+
+        <div class="instructions">
+            <h3>📘 Petunjuk Praktikum:</h3>
+            <ul>
+                <li>Baca setiap komentar (<code># ...</code>) dalam kode untuk memahami konsepnya.</li>
+                <li>Kamu boleh menghapus tanda komentar (<code>#</code>) untuk mencoba perintah tertentu.</li>
+                <li>Klik tombol <b>▶ Jalankan</b> untuk mengeksekusi kode dan lihat hasil di bagian <b>Output</b>.</li>
+                <li>Pelajari langkah demi langkah agar paham semua fungsi <b>List</b> di Python.</li>
+            </ul>
+        </div>
+
+        <div class="editor-container">
+            <label for="editor">🧩 Kode Python:</label>
+            <textarea id="editor" spellcheck="false">
+# ============================================================
+# 📘 MODUL PRAKTIKUM PYTHON LIST (ARRAY)
+# ============================================================
+# List adalah tipe data berurutan di Python yang dapat berisi banyak elemen.
+# Elemen bisa berupa angka, string, atau bahkan list lain (nested list).
+# List bersifat MUTABLE → bisa diubah setelah dibuat.
+# ============================================================
+
+# 1️⃣ MEMBUAT LIST DASAR
+buah = ["apel", "jeruk", "pisang", "mangga"]
+print("List buah awal:", buah)
+
+# ============================================================
+# 2️⃣ MENGAKSES ELEMEN LIST
+# Indeks dimulai dari 0.
+# buah[0] → elemen pertama
+# buah[-1] → elemen terakhir
+# ============================================================
+print("Buah pertama:", buah[0])
+print("Buah terakhir:", buah[-1])
+
+# ============================================================
+# 3️⃣ MENGUBAH NILAI DALAM LIST
+# Karena list bersifat mutable, kita bisa ubah elemen langsung.
+# ============================================================
+buah[0] = "apel hijau"
+print("Setelah diubah:", buah)
+
+# ============================================================
+# 4️⃣ MENAMBAH DATA KE LIST
+# - append(x): menambah 1 elemen di akhir
+# - insert(i, x): menyisipkan di indeks tertentu
+# - extend(iterable): menambah beberapa elemen sekaligus
+# ============================================================
+buah.append("melon")
+buah.insert(2, "anggur")
+buah.extend(["nanas", "pepaya"])
+print("Setelah ditambah:", buah)
+
+# ============================================================
+# 5️⃣ MENGHAPUS DATA DARI LIST
+# - remove(x): hapus elemen pertama dengan nilai x
+# - pop(): hapus elemen terakhir dan kembalikan nilainya
+# - clear(): hapus semua elemen list
+# ============================================================
+buah.remove("jeruk")
+hapus = buah.pop()
+print("Setelah dihapus:", buah)
+print("Yang dihapus:", hapus)
+
+# ============================================================
+# 6️⃣ FUNGSI DASAR PADA LIST
+# len() → menghitung jumlah elemen
+# count(x) → menghitung jumlah kemunculan nilai x
+# index(x) → mencari posisi elemen x (ValueError jika tidak ada)
+# ============================================================
+angka = [2, 4, 5, 5, 10, 4]
+print("List angka:", angka)
+print("Jumlah elemen:", len(angka))
+print("Banyak angka 5:", angka.count(5))
+print("Indeks angka 4:", angka.index(4))
+
+# ============================================================
+# 7️⃣ OPERASI MATEMATIKA LIST
+# + → menggabungkan list
+# * → menduplikasi list
+# in / not in → cek keanggotaan
+# ============================================================
+print("Penjumlahan list:", angka + [20, 30])
+print("Duplikasi list:", angka * 2)
+print("Apakah 4 ada di list?", 4 in angka)
+
+# ============================================================
+# 8️⃣ SLICING LIST
+# Format: list[start:end:step]
+# Gunakan [::-1] untuk membalik list.
+# ============================================================
+print("Elemen ke-2 s.d 4:", angka[1:4])
+print("Membalik urutan:", angka[::-1])
+
+# ============================================================
+# 9️⃣ NESTED LIST (LIST DI DALAM LIST)
+# Akses dengan dua indeks: list[baris][kolom]
+# ============================================================
+kelas = [["Ani", 80], ["Budi", 90], ["Citra", 85]]
+print("Nilai Budi:", kelas[1][1])
+
+# ============================================================
+# 🔟 LOOPING DALAM LIST
+# Bisa langsung atau dengan enumerate() untuk ambil indeks.
+# ============================================================
+print("Daftar nilai siswa:")
+for nama, nilai in kelas:
+    print("-", nama, "=", nilai)
+
+# ============================================================
+# 11️⃣ LIST COMPREHENSION
+# Cara cepat membuat list baru dari list lama.
+# Format: [ekspresi for item in iterable if kondisi]
+# ============================================================
+kuadrat = [x**2 for x in range(1, 6)]
+print("Kuadrat 1–5:", kuadrat)
+
+# ============================================================
+# 12️⃣ SORTING & REVERSING
+# sort(): urut naik
+# reverse(): balik urutan
+# ============================================================
+angka2 = [9, 3, 6, 1, 7]
+angka2.sort()
+print("Urut naik:", angka2)
+angka2.reverse()
+print("Urut turun:", angka2)
+
+# ============================================================
+# 13️⃣ COPY DAN CLEAR LIST
+# copy(): membuat salinan list
+# clear(): mengosongkan list
+# ============================================================
+salinan = angka2.copy()
+salinan.append(100)
+print("Asli:", angka2)
+print("Salinan:", salinan)
+salinan.clear()
+print("Setelah clear:", salinan)
+
+# ============================================================
+# 14️⃣ LOOPING DENGAN RANGE DAN ENUMERATE
+# enumerate(list) → mengembalikan pasangan (indeks, nilai)
+# ============================================================
+warna = ["merah", "hijau", "biru"]
+for i, w in enumerate(warna):
+    print(f"Indeks {i} = {w}")
+
+# ============================================================
+# 15️⃣ SPLIT DAN JOIN STRING ↔ LIST
+# split(): ubah string jadi list
+# join(): ubah list jadi string
+# ============================================================
+kalimat = "belajar python sangat menyenangkan"
+kata = kalimat.split()
+print("List kata:", kata)
+gabung = " ".join(kata)
+print("Kalimat kembali:", gabung)
+
+# ============================================================
+# 16️⃣ NESTED LOOP UNTUK LIST 2D
+# ============================================================
+matrix = [[1,2,3],[4,5,6],[7,8,9]]
+print("Isi matrix:")
+for baris in matrix:
+    for elemen in baris:
+        print(elemen, end=" ")
+    print()
+
+# ============================================================
+# ✅ KESIMPULAN:
+# - List adalah struktur data fleksibel dan dapat diubah.
+# - Gunakan append(), insert(), extend() untuk menambah data.
+# - Gunakan remove(), pop(), clear() untuk menghapus.
+# - Gunakan count(), index() untuk mencari.
+# - Gunakan slicing untuk mengambil bagian list.
+# - Gunakan comprehension untuk membuat list baru dengan cepat.
+# ============================================================
+
+print("\n✅ Semua fungsi List Python telah dipelajari!")
+      </textarea>
+        </div>
+
+        <button id="runBtn">▶ Jalankan</button>
+
+        <div class="output-container">
+            <h3>📤 Output:</h3>
+            <pre id="output"></pre>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt-stdlib.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

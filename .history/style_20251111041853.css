@@ -1,0 +1,132 @@
+body {
+    margin: 0;
+    font-family: Inter, Segoe UI, sans-serif;
+    background: #0b132b;
+    color: #e0e6ed;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+header {
+    background: #1c2541;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 18px;
+    color: #5bc0be;
+    margin: 0;
+}
+
+main {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    overflow: hidden;
+}
+
+aside {
+    background: #1b1b2f;
+    padding: 14px;
+    overflow-y: auto;
+}
+
+aside h2 {
+    font-size: 14px;
+    color: #5bc0be;
+    margin-bottom: 10px;
+}
+
+.level {
+    margin-bottom: 10px;
+    padding: 8px;
+    background: #162447;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.level:hover {
+    background: #1f4068;
+}
+
+.level.active {
+    background: #1f4068;
+    border-left: 4px solid #5bc0be;
+}
+
+.editor-section {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    background: #0f172a;
+    overflow: hidden;
+}
+
+textarea {
+    flex: 1;
+    background: #000c18;
+    color: #dff7ea;
+    border: none;
+    outline: none;
+    padding: 10px;
+    border-radius: 6px;
+    font-family: monospace;
+    font-size: 14px;
+    resize: none;
+}
+
+.controls {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    padding: 8px 12px;
+    border: 0;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.run {
+    background: #5bc0be;
+    color: #fff;
+}
+
+.explain {
+    background: #3a506b;
+    color: #fff;
+}
+
+.next {
+    background: #6ee7b7;
+    color: #000;
+    font-weight: 700;
+}
+
+.output {
+    background: #071017;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 6px;
+    min-height: 100px;
+    font-family: monospace;
+    font-size: 13px;
+    white-space: pre-wrap;
+}
+
+.guide {
+    background: #0d1b2a;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #c7d5e0;
+}

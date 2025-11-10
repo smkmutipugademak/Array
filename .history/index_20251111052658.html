@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🐍 Python Interactive Compiler - Belajar List</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <h1>🐍 Python Interactive Compiler</h1>
+        <h2>📚 Modul Belajar: List (Array) Lengkap</h2>
+
+        <!-- ===================== TABS ===================== -->
+        <div class="tabs">
+            <button class="tab-button active" data-tab="praktikum">🧩 Praktikum</button>
+        </div>
+
+        <!-- ===================== TAB PRAKTIKUM ===================== -->
+        <div id="praktikum" class="tab-content active">
+            <div class="instructions">
+                <div class="card">
+                    <h3>📗 Panduan Praktikum</h3>
+                    <ul style="margin-top:10px; line-height:1.8;">
+                        <li>Edit bagian tertentu sesuai instruksi di komentar <code>#</code>.</li>
+                        <li>Klik tombol <b>▶ Jalankan</b> untuk mengeksekusi kode Python.</li>
+                        <li>Klik tombol <b>🔁 Reset</b> untuk mengembalikan kode ke versi awal.</li>
+                        <li>Kode otomatis tersimpan dan tidak hilang saat halaman dimuat ulang.</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>💡 Materi Hari Ini: List & Method Python</h3>
+                    <p style="margin-top:10px;">
+                        Struktur data <b>list</b> digunakan untuk menyimpan banyak nilai dalam satu variabel.
+                        Beberapa fungsi umum pada list:
+                    </p>
+                    <ul style="margin-top:10px; line-height:1.8;">
+                        <li><code>append()</code> → menambah elemen di akhir list</li>
+                        <li><code>remove()</code> → menghapus elemen tertentu</li>
+                        <li><code>count()</code> → menghitung jumlah kemunculan elemen</li>
+                        <li><code>index()</code> → mencari posisi elemen</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="editor-section">
+        <label>💻 Kode Python:</label>
+        <textarea id="editor" spellcheck="false"></textarea>
+
+        <div class="btn-group">
+            <button id="runBtn">▶ Jalankan Program</button>
+            <button id="resetBtn">🔁 Reset Kode</button>
+        </div>
+    </div>
+
+    <div class="output-container">
+        <h3>📤 Output:</h3>
+        <pre id="output"></pre>
+    </div>
+    </div>
+
+    <!-- ===================== TAB TEORI ===================== -->
+    <div id="teori" class="tab-content">
+        <div class="theory-section">
+
+            <div class="card">
+                <h3 data-step="1">Pengertian List</h3>
+                <p>List adalah tipe data Python yang digunakan untuk menyimpan sekumpulan data dalam satu variabel.
+                    Elemen di dalam list bisa berupa <strong>angka, string, boolean, bahkan list lain</strong>.</p>
+                <pre><code>contoh = ["apel", "jeruk", "mangga", 10, True]</code></pre>
+                <p>List bersifat <strong>mutable</strong>, artinya datanya bisa diubah setelah dibuat.</p>
+            </div>
+
+            <div class="card">
+                <h3 data-step="2">Membuat dan Mengakses List</h3>
+                <p>Gunakan tanda kurung siku <code>[]</code> untuk membuat list.</p>
+                <pre><code>buah = ["apel", "pisang", "mangga"]
+print(buah[0])     # apel
+print(buah[-1])    # mangga</code></pre>
+                <p>Indeks dimulai dari <strong>0</strong>. Nilai negatif digunakan untuk menghitung dari belakang.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3 data-step="3">Menambah Elemen List</h3>
+                <pre><code>buah.append("jeruk")      # tambah di akhir
+buah.insert(1, "melon")   # tambah di posisi tertentu
+buah.extend(["nanas", "pepaya"]) # tambah banyak elemen</code></pre>
+                <p><code>append()</code> untuk satu data, sedangkan <code>extend()</code> untuk banyak data
+                    sekaligus.</p>
+            </div>
+
+            <div class="card">
+                <h3 data-step="4">Menghapus Elemen List</h3>
+                <pre><code>buah.remove("pisang")  # hapus berdasarkan nilai
+buah.pop()            # hapus elemen terakhir
+del buah[0]           # hapus berdasarkan indeks</code></pre>
+                <ul>
+                    <li><code>remove()</code> → hapus berdasarkan isi.</li>
+                    <li><code>pop()</code> → hapus & kembalikan elemen terakhir.</li>
+                    <li><code>del</code> → hapus berdasarkan posisi indeks.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3 data-step="5">Mengubah Elemen</h3>
+                <pre><code>buah[0] = "apel hijau"
+buah[1:3] = ["melon", "nanas"]</code></pre>
+                <p>Kamu bisa mengubah satu atau beberapa elemen sekaligus menggunakan <strong>slicing</strong>.</p>
+            </div>
+
+            <div class="card">
+                <h3 data-step="6">Operasi Dasar List</h3>
+                <pre><code>angka = [1, 2, 3]
+print(len(angka))        # 3
+print(angka + [4, 5])    # gabung list
+print(angka * 2)         # duplikasi
+print(2 in angka)        # cek keanggotaan</code></pre>
+            </div>
+
+            <div class="card">
+                <h3 data-step="7">Fungsi Bawaan List</h3>
+                <pre><code>angka = [2, 4, 4, 5, 10]
+print(angka.count(4))   # menghitung jumlah 4
+print(angka.index(5))   # posisi angka 5
+angka.sort()            # urut naik
+angka.reverse()         # urut turun
+print(angka)</code></pre>
+            </div>
+
+            <div class="card">
+                <h3 data-step="8">Slicing List</h3>
+                <pre><code>buah = ["apel", "pisang", "jeruk", "mangga", "melon"]
+print(buah[1:4])   # ['pisang', 'jeruk', 'mangga']
+print(buah[:3])    # ['apel', 'pisang', 'jeruk']
+print(buah[::-1])  # urutan dibalik</code></pre>
+            </div>
+
+            <div class="card">
+                <h3 data-step="9">Nested List (List di dalam List)</h3>
+                <pre><code>kelas = [["Ani", 80], ["Budi", 90], ["Citra", 85]]
+print(kelas[1][0])  # Budi
+print(kelas[1][1])  # 90</code></pre>
+                <p>Nested list digunakan untuk menyimpan data tabel atau pasangan nilai.</p>
+            </div>
+
+            <div class="card">
+                <h3 data-step="10">Looping pada List</h3>
+                <pre><code>for buah in ["apel", "pisang", "jeruk"]:
+    print(buah)</code></pre>
+                <p>Gunakan <code>enumerate()</code> untuk mendapatkan indeks dan nilai:</p>
+                <pre><code>buah = ["apel", "jeruk", "pisang"]
+for i, item in enumerate(buah):
+    print(i, item)</code></pre>
+            </div>
+
+            <div class="card">
+                <h3 data-step="11">List Comprehension</h3>
+                <pre><code>angka = [x for x in range(5)]
+kuadrat = [x**2 for x in range(1,6)]
+print(angka)
+print(kuadrat)</code></pre>
+            </div>
+
+            <div class="card">
+                <h3 data-step="12">Fungsi Copy dan Clear</h3>
+                <pre><code>data = [1, 2, 3]
+salinan = data.copy()
+salinan.append(4)
+print("Asli:", data)
+print("Salinan:", salinan)
+
+data.clear()
+print("Setelah clear:", data)</code></pre>
+            </div>
+
+            <div class="card">
+                <h3 data-step="13">📖 Rangkuman</h3>
+                <ul>
+                    <li>List menyimpan banyak data dalam satu variabel.</li>
+                    <li>List bersifat <strong>mutable</strong> (bisa diubah).</li>
+                    <li>Dapat ditambah, dihapus, digabung, dan diulang.</li>
+                    <li>Mendukung operasi matematika dan logika sederhana.</li>
+                    <li>Penting untuk memahami manipulasi data di Python.</li>
+                </ul>
+            </div>
+
+            <div class="card" style="text-align:center; color:#22c55e;">
+                <h3>🎉 Selesai! Kamu sudah memahami semua konsep List Python 🎉</h3>
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+    <!-- Skulpt -->
+    <script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt-stdlib.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

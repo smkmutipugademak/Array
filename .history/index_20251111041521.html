@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Lab Interaktif Python — List & Array</title>
+    <!-- Simple styling -->
+    <style>
+        :root {
+            --bg: #0f1724;
+            --panel: #0b1220;
+            --muted: #9aa5b1;
+            --accent: #6ee7b7;
+            --card: #0f1724;
+        }
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            font-family: Inter, Segoe UI, Roboto, "Helvetica Neue", Arial;
+            background: linear-gradient(#071020, #071827);
+            color: #e6eef3;
+        }
+
+        .wrap {
+            display: grid;
+            grid-template-columns: 360px 1fr;
+            gap: 16px;
+            padding: 18px;
+            height: 100vh;
+            box-sizing: border-box;
+        }
+
+        .panel {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 10px;
+            padding: 14px;
+            overflow: auto;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+        }
+
+        .panel h2 {
+            margin: 6px 0 12px;
+            font-size: 18px;
+            color: var(--accent)
+        }
+
+        .panel p {
+            color: var(--muted);
+            line-height: 1.5;
+            font-size: 13px
+        }
+
+        .panel .section {
+            margin-bottom: 18px
+        }
+
+        .guide-list {
+            font-size: 13px;
+            margin: 8px 0;
+            padding-left: 18px;
+            color: var(--muted)
+        }
+
+        .exercise {
+            background: rgba(255, 255, 255, 0.01);
+            padding: 8px;
+            border-radius: 8px;
+            margin: 8px 0;
+        }
+
+        .exercise pre {
+            margin: 6px 0;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 8px;
+            border-radius: 6px;
+            font-size: 12px;
+            color: #dff7ea;
+            overflow: auto
+        }
+
+        /* right side */
+        .main {
+            display: flex;
+            flex-direction: column;
+            gap: 10px
+        }
+
+        .editor-panel {
+            display: flex;
+            gap: 10px;
+            align-items: stretch
+        }
+
+        .editor {
+            flex: 1;
+            min-height: 320px;
+            background: #041020;
+            border-radius: 8px;
+            padding: 10px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column
+        }
+
+        textarea#code {
+            flex: 1;
+            width: 100%;
+            resize: vertical;
+            background: transparent;
+            border: 0;
+            outline: none;
+            color: #dff7ea;
+            font-family: monospace;
+            font-size: 13px;
+            line-height: 1.45
+        }
+
+        .controls {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+            align-items: center
+        }
+
+        button {
+            background: linear-gradient(90deg, #0ea5a4, #60a5fa);
+            border: 0;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600
+        }
+
+        button.ghost {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            color: var(--muted)
+        }
+
+        .output {
+            background: #061022;
+            border-radius: 8px;
+            padding: 10px;
+            min-height: 120px;
+            color: #c9f6dd;
+            font-family: monospace;
+            white-space: pre-wrap;
+            overflow: auto;
+            font-size: 13px
+        }
+
+        .small {
+            font-size: 12px;
+            color: var(--muted)
+        }
+
+        .example-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 8px
+        }
+
+        .hint {
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+            padding: 8px;
+            border-radius: 6px;
+            color: var(--muted);
+            font-size: 13px
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px
+        }
+
+        @media (max-width:900px) {
+            .wrap {
+                grid-template-columns: 1fr;
+                padding: 12px
+            }
+
+            .panel {
+                order: 2
+            }
+        }
+    </style>
+    <!-- Skulpt: in-browser Python interpreter -->
+    <script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt-stdlib.js"></script>
+</head>
+
+<body>
+    <div class="wrap">
+        <!-- Left panel: materi & latihan -->
+        <aside class="panel">
+            <div class="top">
+                <h2>Materi: List (Array) — Panduan Praktik</h2>
+                <p class="small">Ringkasan dan langkah praktik singkat. Gunakan contoh pada kanan, muat ke editor, lalu
+                    tekan <strong>Run</strong>.</p>
+            </div>
+
+            <div class="section">
+                <h3 style="color:var(--accent);margin:0 0 8px 0;font-size:14px">Dasar List</h3>
+                <ul class="guide-list">
+                    <li>List ditulis pakai kurung siku: <code>[1, 2, 3]</code></li>
+                    <li>Indeks mulai dari 0, indeks negatif menghitung dari akhir.</li>
+                    <li>List bersifat <em>mutable</em> — bisa diubah langsung.</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h3 style="color:var(--accent);font-size:14px">Fungsi penting</h3>
+                <ul class="guide-list">
+                    <li><code>append(x)</code> — tambah di akhir</li>
+                    <li><code>insert(i, x)</code> — sisipkan</li>
+                    <li><code>extend(list2)</code> — gabung list</li>
+                    <li><code>pop()</code> / <code>remove(x)</code> — hapus</li>
+                    <li><code>count(x)</code>, <code>index(x)</code>, <code>len(list)</code></li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h3 style="color:var(--accent);font-size:14px">Slicing & Comprehension</h3>
+                <ul class="guide-list">
+                    <li>Sintaks slicing: <code>list[a:b:c]</code></li>
+                    <li>List comprehension: <code>[x*2 for x in nums]</code></li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h3 style="color:var(--accent);font-size:14px">Praktik cepat (langkah)</h3>
+                <ol class="guide-list">
+                    <li>Baca instruksi soal di bawah.</li>
+                    <li>Muat contoh ke editor dengan tombol <em>Muat Contoh</em>.</li>
+                    <li>Modifikasi agar menghasilkan output yang diminta.</li>
+                    <li>Tekan <strong>Run</strong>. Jika ada pengujian tekan <strong>Check</strong>.</li>
+                </ol>
+            </div>
+
+            <div class="section">
+                <h3 style="color:var(--accent);font-size:14px">Latihan</h3>
+                <div class="example-list">
+                    <div class="exercise">
+                        <strong>Soal 1 — append & count</strong>
+                        <p class="small">Tambahkan angka 7 ke list lalu cetak banyak angka 7.</p>
+                        <pre>nums = [1, 7, 3, 7]\n# tambahkan di sini\n# cetak jumlah 7</pre>
+                        <div style="display:flex;gap:6px;margin-top:6px">
+                            <button onclick="loadExample(1)">Muat Contoh</button>
+                            <button class="ghost" onclick="loadTest(1)">Lihat Tes</button>
+                        </div>
+                    </div>
+
+                    <div class="exercise">
+                        <strong>Soal 2 — slicing</strong>
+                        <p class="small">Ambil elemen indeks 1 sampai 3 (inklusif-indeks 3).</p>
+                        <pre>fruits = ['apel','pisang','jeruk','manggis','anggur']\n# hasil diharapkan: ['pisang','jeruk','manggis']\n</pre>
+                        <div style="display:flex;gap:6px;margin-top:6px">
+                            <button onclick="loadExample(2)">Muat Contoh</button>
+                            <button class="ghost" onclick="loadTest(2)">Lihat Tes</button>
+                        </div>
+                    </div>
+
+                    <div class="exercise">
+                        <strong>Soal 3 — list comprehension</strong>
+                        <p class="small">Buat list baru berisi kuadrat dari nilai <code>nums</code>.</p>
+                        <pre>nums = [1,2,3,4]\n# hasil: [1,4,9,16]\n</pre>
+                        <div style="display:flex;gap:6px;margin-top:6px">
+                            <button onclick="loadExample(3)">Muat Contoh</button>
+                            <button class="ghost" onclick="loadTest(3)">Lihat Tes</button>
+                        </div>
+                    </div>
+
+                    <div class="exercise">
+                        <strong>Soal 4 — nested list</strong>
+                        <p class="small">Akses elemen 'b' dari list bersarang.</p>
+                        <pre>data = [1, ['a','b','c'], 3]\n# cetak 'b'</pre>
+                        <div style="display:flex;gap:6px;margin-top:6px">
+                            <button onclick="loadExample(4)">Muat Contoh</button>
+                            <button class="ghost" onclick="loadTest(4)">Lihat Tes</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="section">
+                <h3 style="color:var(--accent);font-size:14px">Tips Guru</h3>
+                <p class="small hint">Untuk latihan kelas: minta siswa menekan <strong>Check</strong> setelah Run. Tes
+                    menggunakan assert sederhana sehingga siswa melihat PASS/FAIL.</p>
+            </div>
+        </aside>
+
+        <!-- Right: editor & output -->
+        <main class="main">
+            <div class="panel editor">
+                <div class="top-bar">
+                    <div>
+                        <strong style="font-size:15px">Editor Python — List Lab</strong>
+                        <div class="small">Jalankan kode Python di browser (Skulpt). Gunakan fungsi list untuk latihan.
+                        </div>
+                    </div>
+                    <div class="small">Modul: <code>list</code></div>
+                </div>
+
+                <textarea id="code" spellcheck="false">
+# Selamat datang di Lab List!
+# Contoh singkat:
+numbers = [2,4,5,5,5,10]
+print("Awal:", numbers)
+numbers.append(8)
+print("Setelah append:", numbers)
+print("Jumlah 5: ", numbers.count(5))
+# ubah kode di atas sesuai soal latihan
+        </textarea>
+
+                <div class="controls">
+                    <button onclick="runCode()">Run ▶</button>
+                    <button onclick="checkCode()" class="ghost">Check ✓</button>
+                    <button onclick="clearOutput()" class="ghost">Clear Output</button>
+                    <div style="flex:1"></div>
+                    <select id="fontSize" onchange="changeFont()" class="small"
+                        style="background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted);padding:6px;border-radius:6px">
+                        <option value="13">Font 13</option>
+                        <option value="15">Font 15</option>
+                        <option value="17">Font 17</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="panel">
+                <div style="display:flex;gap:10px;align-items:center;margin-bottom:8px">
+                    <strong style="font-size:14px">Output</strong>
+                    <div class="small" style="margin-left:8px;color:var(--muted)">Console Python</div>
+                </div>
+                <div id="output" class="output">Tekan <strong>Run</strong> untuk menjalankan kode. Hasil akan muncul di
+                    sini.</div>
+
+                <div style="margin-top:10px">
+                    <details>
+                        <summary style="cursor:pointer;color:var(--accent)">Tes internal (untuk guru)</summary>
+                        <div class="small" style="margin-top:8px;color:var(--muted)">
+                            Fitur Check menambahkan kode assert di akhir agar siswa melihat apakah jawaban benar. Kamu
+                            bisa mengedit tes di dalam fungsi <code>getTestById</code> pada <em>script</em> di bawah.
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // ---------- Skulpt helpers ----------
+        function outf(text) {
+            const out = document.getElementById("output");
+            out.textContent += text;
+        }
+        function builtinRead(x) {
+            if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined)
+                throw "File not found: '" + x + "'";
+            return Sk.builtinFiles["files"][x];
+        }
+
+        function runSkulpt(code, onfinish) {
+            const out = document.getElementById("output");
+            out.textContent = "";
+            Sk.configure({ output: outf, read: builtinRead });
+            (Sk.misceval.asyncToPromise)(function () {
+                return Sk.importMainWithBody("<stdin>", false, code, true);
+            }).then(function (mod) {
+                if (onfinish) onfinish(true);
+            }).catch(function (err) {
+                out.textContent += err.toString();
+                if (onfinish) onfinish(false);
+            });
+        }
+
+        // ---------- Editor helpers ----------
+        function runCode() {
+            const code = document.getElementById("code").value;
+            runSkulpt(code);
+        }
+
+        function clearOutput() {
+            document.getElementById("output").textContent = "";
+        }
+
+        function changeFont() {
+            const val = document.getElementById("fontSize").value;
+            document.getElementById("code").style.fontSize = val + "px";
+        }
+
+        // ---------- Examples & Tests ----------
+        function loadExample(id) {
+            const examples = {
+                1: `# Soal 1 - append & count\nnums = [1, 7, 3, 7]\n# Tambahkan angka 7 di sini\n# Cetak jumlah 7\n`,
+                2: `# Soal 2 - slicing\nfruits = ['apel','pisang','jeruk','manggis','anggur']\nprint(fruits[1:4])  # ubah jika perlu\n`,
+                3: `# Soal 3 - list comprehension\nnums = [1,2,3,4]\nsquares = [x*x for x in nums]\nprint(squares)\n`,
+                4: `# Soal 4 - nested list\ndata = [1, ['a','b','c'], 3]\nprint(data[1][1])  # akses 'b'\n`
+            };
+            document.getElementById("code").value = examples[id] || "";
+        }
+
+        function loadTest(id) {
+            const tests = {
+                1: "### TEST: append & count\n# Expected: add 7 and print count 3\n",
+                2: "### TEST: slicing\n# Expected slice ['pisang','jeruk','manggis']\n",
+                3: "### TEST: list comprehension\n# Expected [1,4,9,16]\n",
+                4: "### TEST: nested list\n# Expected output: b\n"
+            };
+            alert("Lihat tes di panel 'Check' (internal). Untuk soal lengkap, tekan Check.");
+        }
+
+        // Provide test code strings used by checkCode()
+        function getTestByIdFromPrompt(prompt) {
+            // very simple mapping by reading the first lines of the editor to guess which example
+            if (prompt.indexOf("Soal 1") !== -1 || prompt.indexOf("nums = [1, 7") !== -1) {
+                // test: after student's code run, expect count of 7 equals 3 (since they must append a 7)
+                // The assert will print PASS or FAIL
+                return `
+# --- test wrapper for soal1 ---
+try:
+    # assume student code already defined nums
+    c = nums.count(7)
+    assert c == 3, "Jumlah 7 harus 3 (termasuk yang ditambahkan)"
+    print("TEST PASS: jumlah 7 =", c)
+except Exception as e:
+    print("TEST FAIL:", e)
+`;
+            }
+            if (prompt.indexOf("fruits =") !== -1) {
+                return `
+# --- test wrapper for soal2 ---
+try:
+    s = fruits[1:4]
+    assert s == ['pisang','jeruk','manggis'], f"Slice tidak sesuai: {s}"
+    print("TEST PASS:", s)
+except Exception as e:
+    print("TEST FAIL:", e)
+`;
+            }
+            if (prompt.indexOf("list comprehension") !== -1 || prompt.indexOf("squares") !== -1 || prompt.indexOf("nums = [1,2,3,4]") !== -1) {
+                return `
+# --- test wrapper for soal3 ---
+try:
+    assert squares == [1,4,9,16], f"squares salah: {squares}"
+    print("TEST PASS:", squares)
+except Exception as e:
+    print("TEST FAIL:", e)
+`;
+            }
+            if (prompt.indexOf("nested") !== -1 || prompt.indexOf("data =") !== -1) {
+                return `
+# --- test wrapper for soal4 ---
+try:
+    assert data[1][1] == 'b', f"elemen bukan 'b': {data[1][1]}"
+    print("TEST PASS: element =", data[1][1])
+except Exception as e:
+    print("TEST FAIL:", e)
+`;
+            }
+            // fallback: no test
+            return null;
+        }
+
+        function checkCode() {
+            const code = document.getElementById("code").value;
+            // determine which test to use
+            const testCode = getTestByIdFromPrompt(code);
+            if (!testCode) {
+                document.getElementById("output").textContent = "Tidak ada tes yang cocok untuk kode ini. Jalankan Run untuk melihat output normal.";
+                return;
+            }
+            // run student code then test wrapper
+            const combined = code + "\n\n" + testCode;
+            runSkulpt(combined);
+        }
+
+        // Preload a friendly starter
+        document.addEventListener("DOMContentLoaded", function () {
+            changeFont();
+        });
+    </script>
+</body>
+
+</html>

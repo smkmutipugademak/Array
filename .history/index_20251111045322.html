@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🐍 Python Interactive Compiler - Modul List Lengkap</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <h2>🐍 Python Interactive Compiler - Belajar List (Array)</h2>
+
+        <!-- 🔹 Navigasi Tabs -->
+        <div class="tabs">
+            <button class="tab-button active" data-tab="praktikum">🧩 Praktikum</button>
+            <button class="tab-button" data-tab="teori">📘 Teori Lengkap</button>
+        </div>
+
+        <!-- ===================== 🔹 TAB PRAKTIKUM ===================== -->
+        <div id="praktikum" class="tab-content active">
+            <div class="instructions">
+                <h3>📗 Panduan Praktikum:</h3>
+                <ul>
+                    <li>Baca komentar (<code># ...</code>) pada kode untuk memahami setiap konsep.</li>
+                    <li>Kamu bisa hapus tanda <code>#</code> untuk mencoba perintah.</li>
+                    <li>Klik tombol <b>▶ Jalankan</b> untuk menjalankan kode dan lihat hasilnya.</li>
+                    <li>Pelajari langkah demi langkah agar paham seluruh fungsi <b>List</b> di Python.</li>
+                </ul>
+            </div>
+
+            <div class="editor-container">
+                <label for="editor">💻 Kode Python:</label>
+                <textarea id="editor" spellcheck="false">
+# ============================================================
+# 📘 PRAKTIKUM PYTHON LIST LENGKAP
+# ============================================================
+
+buah = ["apel", "jeruk", "pisang", "mangga"]
+print("List buah awal:", buah)
+
+# 🔹 Akses elemen
+print("Buah pertama:", buah[0])
+print("Buah terakhir:", buah[-1])
+
+# 🔹 Ubah elemen
+buah[0] = "apel hijau"
+print("Setelah diubah:", buah)
+
+# 🔹 Tambah data
+buah.append("melon")
+buah.insert(2, "anggur")
+buah.extend(["nanas", "pepaya"])
+print("Setelah ditambah:", buah)
+
+# 🔹 Hapus data
+buah.remove("jeruk")
+hapus = buah.pop()
+print("Setelah dihapus:", buah)
+print("Yang dihapus:", hapus)
+
+# 🔹 Fungsi dasar list
+angka = [2, 4, 5, 5, 10, 4]
+print("List angka:", angka)
+print("Jumlah elemen:", len(angka))
+print("Banyak angka 5:", angka.count(5))
+print("Indeks angka 4:", angka.index(4))
+
+# 🔹 Operasi list
+print("Penjumlahan list:", angka + [20, 30])
+print("Duplikasi list:", angka * 2)
+print("Apakah 4 ada di list?", 4 in angka)
+
+# 🔹 Slicing
+print("Elemen ke-2 s.d 4:", angka[1:4])
+print("Membalik urutan:", angka[::-1])
+
+# 🔹 Nested list
+kelas = [["Ani", 80], ["Budi", 90], ["Citra", 85]]
+print("Nilai Budi:", kelas[1][1])
+
+# 🔹 Looping
+print("Daftar nilai siswa:")
+for nama, nilai in kelas:
+    print("-", nama, "=", nilai)
+
+# 🔹 List comprehension
+kuadrat = [x**2 for x in range(1, 6)]
+print("Kuadrat 1–5:", kuadrat)
+
+# 🔹 Sort & Reverse
+angka2 = [9, 3, 6, 1, 7]
+angka2.sort()
+print("Urut naik:", angka2)
+angka2.reverse()
+print("Urut turun:", angka2)
+
+# 🔹 Copy dan Clear
+salinan = angka2.copy()
+salinan.append(100)
+print("Asli:", angka2)
+print("Salinan:", salinan)
+salinan.clear()
+print("Setelah clear:", salinan)
+
+print("\n✅ Semua fungsi List Python telah dipelajari!")
+        </textarea>
+            </div>
+
+            <button id="runBtn">▶ Jalankan</button>
+
+            <div class="output-container">
+                <h3>📤 Output:</h3>
+                <pre id="output"></pre>
+            </div>
+        </div>
+
+        <!-- ===================== 🔹 TAB TEORI ===================== -->
+        <div id="teori" class="tab-content">
+            <h3>📖 Teori Lengkap Python List</h3>
+
+            <section>
+                <h4>1️⃣ Pengertian List</h4>
+                <p><b>List</b> adalah struktur data di Python yang bisa menyimpan banyak nilai sekaligus dalam satu
+                    variabel.
+                    List bersifat <b>mutable</b> (dapat diubah).</p>
+                <pre><code>buah = ["apel", "jeruk", "mangga"]</code></pre>
+            </section>
+
+            <section>
+                <h4>2️⃣ Akses Elemen & Indeks</h4>
+                <p>Gunakan indeks (dimulai dari 0) untuk mengakses elemen.
+                    Indeks negatif menghitung dari belakang.</p>
+                <pre><code>buah = ["apel", "jeruk", "pisang", "mangga"]
+print(buah[0])   # apel
+print(buah[-1])  # mangga
+print(buah[1:3]) # ['jeruk', 'pisang']</code></pre>
+                <img src="https://i.ibb.co/M6fhsNp/python-index-list.png" alt="Indeks List" class="theory-img" />
+            </section>
+
+            <section>
+                <h4>3️⃣ Menambah & Menghapus Elemen</h4>
+                <ul>
+                    <li><code>append(x)</code> → menambah di akhir</li>
+                    <li><code>insert(i, x)</code> → sisipkan di indeks tertentu</li>
+                    <li><code>extend(list)</code> → gabung dua list</li>
+                    <li><code>remove(x)</code> → hapus elemen pertama yang cocok</li>
+                    <li><code>pop()</code> → hapus elemen terakhir</li>
+                    <li><code>clear()</code> → hapus semua elemen</li>
+                </ul>
+            </section>
+
+            <section>
+                <h4>4️⃣ Mengubah & Menyalin List</h4>
+                <pre><code>buah[0] = "apel hijau"
+copy_buah = buah.copy()
+buah.clear()</code></pre>
+                <p>Gunakan <code>copy()</code> agar perubahan di list baru tidak mempengaruhi list asli.</p>
+            </section>
+
+            <section>
+                <h4>5️⃣ Fungsi Umum pada List</h4>
+                <ul>
+                    <li><code>len(list)</code> → jumlah elemen</li>
+                    <li><code>sum(list)</code> → total semua angka</li>
+                    <li><code>max(list)</code> / <code>min(list)</code> → nilai terbesar/kecil</li>
+                    <li><code>list.count(x)</code> → jumlah kemunculan nilai</li>
+                    <li><code>list.index(x)</code> → indeks pertama nilai</li>
+                </ul>
+            </section>
+
+            <section>
+                <h4>6️⃣ Operasi List</h4>
+                <pre><code>[1,2,3] + [4,5]   # gabung
+[1,2] * 2       # duplikasi
+3 in [1,2,3]    # True</code></pre>
+            </section>
+
+            <section>
+                <h4>7️⃣ Slicing (Mengambil Sebagian)</h4>
+                <p>Slicing berguna untuk mengambil bagian tertentu dari list menggunakan sintaks
+                    <code>[start:end:step]</code>.
+                </p>
+                <img src="https://i.ibb.co/BtJZq6N/python-slicing-diagram.png" alt="Slicing Python"
+                    class="theory-img" />
+            </section>
+
+            <section>
+                <h4>8️⃣ Nested List (List di Dalam List)</h4>
+                <pre><code>data = [["Ani",80], ["Budi",90]]
+print(data[1][1]) # 90</code></pre>
+                <p>Gunakan dua indeks untuk mengakses elemen di dalam list 2D.</p>
+            </section>
+
+            <section>
+                <h4>9️⃣ Looping & Enumerate</h4>
+                <pre><code>warna = ["merah","hijau","biru"]
+for i, w in enumerate(warna):
+    print(i, w)</code></pre>
+                <p><code>enumerate()</code> memberikan pasangan indeks dan nilai.</p>
+            </section>
+
+            <section>
+                <h4>🔟 List Comprehension</h4>
+                <p>Cara cepat dan efisien membuat list baru.</p>
+                <pre><code>kuadrat = [x**2 for x in range(5)]
+genap = [x for x in range(10) if x%2==0]</code></pre>
+            </section>
+
+            <section>
+                <h4>1️⃣1️⃣ Pengurutan & Pembalikan</h4>
+                <pre><code>data.sort()     # urut naik
+data.reverse()  # balik urutan</code></pre>
+            </section>
+
+            <section>
+                <h4>1️⃣2️⃣ Kesimpulan</h4>
+                <ul>
+                    <li>List bersifat <b>mutable</b> — bisa diubah kapan saja.</li>
+                    <li>Gunakan slicing untuk menyalin atau mengambil sebagian data.</li>
+                    <li>Gunakan <code>copy()</code> agar tidak terhubung dengan list asli.</li>
+                    <li>Gunakan comprehension untuk membuat list baru dengan cepat.</li>
+                </ul>
+            </section>
+        </div>
+    </div>
+
+    <!-- Skrip -->
+    <script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt-stdlib.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

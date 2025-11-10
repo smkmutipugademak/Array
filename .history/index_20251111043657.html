@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Python Interactive Compiler - Belajar List</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <h2>💻 Python Online Compiler - Belajar List</h2>
+
+        <div class="instructions">
+            <h3>📘 Petunjuk Praktikum:</h3>
+            <ul>
+                <li>Perhatikan contoh kode Python di bawah ini.</li>
+                <li>Kamu hanya boleh mengubah **isi array (list)** jika diminta.</li>
+                <li>Jangan hapus atau ubah perintah <code>print()</code> dan operasi Python-nya.</li>
+                <li>Klik tombol <b>▶ Jalankan</b> untuk melihat hasilnya di bagian <b>Output</b>.</li>
+                <li>Amati hasil fungsi seperti:
+                    <ul>
+                        <li><code>len()</code> → menghitung panjang list</li>
+                        <li><code>sum()</code> → menjumlahkan isi list</li>
+                        <li><code>max()</code> / <code>min()</code> → mencari nilai terbesar / terkecil</li>
+                        <li><code>count()</code> → menghitung berapa kali angka muncul</li>
+                        <li><code>index()</code> → menemukan posisi data</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="editor-container">
+            <label for="editor">🧩 Kode Python:</label>
+            <textarea id="editor" spellcheck="false" readonly>
+number = [2,4,5,5,10]
+number_two = [13,15]
+
+print(len(number))
+print(sum(number))
+print(max(number))
+print(min(number))
+print(number.count(5))
+print(number.index(4))
+print(number)
+      </textarea>
+        </div>
+
+        <button id="runBtn">▶ Jalankan</button>
+
+        <div class="output-container">
+            <h3>📤 Output:</h3>
+            <pre id="output"></pre>
+        </div>
+    </div>
+
+    <!-- Skulpt (Python Interpreter di Browser) -->
+    <script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt-stdlib.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

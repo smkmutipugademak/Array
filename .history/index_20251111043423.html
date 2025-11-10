@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Online Python Compiler - Edu Version</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <h1>🐍 Online Python Compiler Edu</h1>
+        <p>Ketik kode Python di bawah ini, lalu tekan <b>Run ▶</b> untuk menjalankannya.</p>
+
+        <textarea id="editor" spellcheck="false">
+# Contoh kode Python:
+# Kamu bisa ubah dan jalankan
+name = "Nanda"
+angka = [2, 4, 5, 6]
+print("Halo,", name)
+print("Jumlah data:", len(angka))
+print("Total nilai:", sum(angka))
+print("Nilai terbesar:", max(angka))
+    </textarea>
+
+        <div class="button-box">
+            <button id="runBtn">▶ Run</button>
+            <button id="clearBtn">🧹 Clear Output</button>
+        </div>
+
+        <div class="output-box">
+            <h2>💻 Output:</h2>
+            <pre id="output">Menunggu kode dijalankan...</pre>
+        </div>
+
+        <footer>
+            <p>✨ Dibuat untuk pembelajaran Python dasar — Edu Version</p>
+        </footer>
+    </div>
+
+    <!-- Pyodide untuk menjalankan Python di browser -->
+    <script type="module" src="https://cdn.jsdelivr.net/pyodide/v0.24.1/full/pyodide.mjs"></script>
+    <script type="module" src="script.js"></script>
+</body>
+
+</html>

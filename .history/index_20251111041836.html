@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belajar List Python Interaktif</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt-stdlib.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>🐍 Belajar Python: List Interaktif</h1>
+        <div id="progress">Level 1 dari 10</div>
+    </header>
+
+    <main>
+        <aside id="sidebar">
+            <h2>Level Pembelajaran</h2>
+            <div class="level active" onclick="loadLevel(1)">1️⃣ Dasar List</div>
+            <div class="level" onclick="loadLevel(2)">2️⃣ Akses & Indeks</div>
+            <div class="level" onclick="loadLevel(3)">3️⃣ Menambah Data (append, insert)</div>
+            <div class="level" onclick="loadLevel(4)">4️⃣ Menghapus Data (pop, remove)</div>
+            <div class="level" onclick="loadLevel(5)">5️⃣ Slicing List</div>
+            <div class="level" onclick="loadLevel(6)">6️⃣ Looping List</div>
+            <div class="level" onclick="loadLevel(7)">7️⃣ List dalam List</div>
+            <div class="level" onclick="loadLevel(8)">8️⃣ List Comprehension</div>
+            <div class="level" onclick="loadLevel(9)">9️⃣ Sort dan Reverse</div>
+            <div class="level" onclick="loadLevel(10)">🔟 Mini Project</div>
+        </aside>
+
+        <section class="editor-section">
+            <div id="guide" class="guide"></div>
+            <textarea id="editor"></textarea>
+
+            <div class="controls">
+                <button class="run" onclick="runCode()">▶ Jalankan</button>
+                <button class="explain" onclick="showExplain()">💡 Penjelasan</button>
+                <button class="next" onclick="nextLevel()">➡️ Lanjut</button>
+            </div>
+
+            <div id="output" class="output">Output akan tampil di sini...</div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

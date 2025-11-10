@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belajar Python List Interaktif</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h2>🧠 Belajar Python: Operasi pada List</h2>
+        <p class="desc">
+            Ubah nilai <code>number</code> di bawah ini, lalu klik <b>Run</b> untuk melihat hasil eksekusinya.<br>
+            Perintah Python lainnya tidak bisa diubah.
+        </p>
+
+        <div class="editor-box">
+            <div class="readonly-code">
+                <pre>
+print(len(number))
+print(sum(number))
+print(max(number))
+print(min(number))
+print(number.count(5))
+print(number.index(4))
+                </pre>
+            </div>
+            <textarea id="editable" spellcheck="false">number = [2, 4, 5, 5, 10]</textarea>
+        </div>
+
+        <button id="runBtn">▶ Run</button>
+
+        <div class="output-box">
+            <h3>💻 Output:</h3>
+            <pre id="output">Klik Run untuk melihat hasil...</pre>
+        </div>
+
+        <div class="explanation">
+            <h3>📘 Penjelasan:</h3>
+            <ul>
+                <li><b>len(number)</b> → menghitung jumlah elemen di list.</li>
+                <li><b>sum(number)</b> → menjumlahkan seluruh elemen.</li>
+                <li><b>max(number)</b> → menampilkan nilai terbesar.</li>
+                <li><b>min(number)</b> → menampilkan nilai terkecil.</li>
+                <li><b>number.count(5)</b> → menghitung berapa kali angka 5 muncul.</li>
+                <li><b>number.index(4)</b> → mencari posisi indeks angka 4.</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
