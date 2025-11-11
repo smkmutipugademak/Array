@@ -1,7 +1,6 @@
 /* RESET & BASE */
 * {
     box-sizing: border-box;
-    margin: 0;
     padding: 0;
 }
 
@@ -45,35 +44,53 @@ h2 {
 }
 
 /* TABS */
-.tabs {
+.tab-nav {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
     gap: 10px;
-    margin-bottom: 25px;
+    margin: 15px 0;
 }
 
 .tab-button {
-    padding: 10px 22px;
     background: #1e293b;
-    border: 1px solid #334155;
-    border-radius: 10px;
-    color: #cbd5e1;
+    color: #e2e8f0;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    font-weight: 500;
-}
-
-.tab-button:hover {
-    background: #2563eb;
-    color: #fff;
-    transform: translateY(-2px);
+    font-weight: bold;
+    transition: all 0.3s;
 }
 
 .tab-button.active {
-    background: linear-gradient(90deg, #22c55e, #16a34a);
-    color: #fff;
-    box-shadow: 0 0 10px rgba(34, 197, 94, 0.4);
+    background: #3b82f6;
+    color: white;
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+}
+
+.tab-button:hover {
+    background: #475569;
+}
+
+.tab-content {
+    display: none;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* THEORY SECTION */
