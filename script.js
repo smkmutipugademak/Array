@@ -174,38 +174,60 @@ fontSizeSelect.addEventListener("change", () => {
 });
 
 
-// 🔒 Nonaktifkan klik kanan
-document.addEventListener('contextmenu', event => event.preventDefault());
-
-// 🔒 Nonaktifkan kombinasi tombol inspect (F12, Ctrl+Shift+I, Ctrl+U, dll)
-document.addEventListener('keydown', function (e) {
-    if (
-        e.key === 'F12' ||
-        (e.ctrlKey && e.shiftKey && ['I', 'J', 'C'].includes(e.key.toUpperCase())) ||
-        (e.ctrlKey && ['U', 'S', 'C', 'A'].includes(e.key.toUpperCase()))
-    ) {
-        e.preventDefault();
-        e.stopPropagation();
-        alert("❌ Akses ini dibatasi demi keamanan praktikum.");
-    }
-});
-
-// 🔒 Nonaktifkan select, copy, paste, drag
-document.addEventListener('selectstart', e => e.preventDefault());
-document.addEventListener('copy', e => e.preventDefault());
-document.addEventListener('cut', e => e.preventDefault());
-document.addEventListener('paste', e => e.preventDefault());
-document.addEventListener('dragstart', e => e.preventDefault());
-
-// 🕵️‍♂️ Deteksi jika devtools dibuka
-(function detectDevTools() {
+// ===============================
+// 🧱 Anti Inspect Super Ketat
+// ===============================
+(function protectPage() {
+    // 1️⃣ Deteksi devtools aktif (lebar window mencurigakan)
+    let devtoolsOpen = false;
     const threshold = 160;
-    const check = setInterval(() => {
-        const start = performance.now();
-        debugger;
-        if (performance.now() - start > threshold) {
-            alert("⚠️ Developer tools terdeteksi. Halaman akan dimuat ulang.");
-            location.reload();
+
+    function detectDevTools() {
+        const widthThreshold = window.outerWidth - window.innerWidth > threshold;
+        const heightThreshold = window.outerHeight - window.innerHeight > threshold;
+        if (widthThreshold || heightThreshold) {
+            if (!devtoolsOpen) {
+                devtoolsOpen = true;
+                document.body.innerHTML = `
+                    <div style="
+                        display:flex;
+                        justify-content:center;
+                        align-items:center;
+                        height:100vh;
+                        background:#0f172a;
+                        color:#e2e8f0;
+                        font-family:'Fira Code', monospace;
+                        text-align:center;
+                        font-size:1.2rem;
+                    ">
+                        ⚠️ Developer Tools terdeteksi.<br>
+                        Akses ini dinonaktifkan untuk menjaga integritas praktikum.
+                    </div>`;
+                setTimeout(() => location.reload(), 2000);
+            }
+        } else {
+            devtoolsOpen = false;
         }
-    }, 1000);
+    }
+
+    // 2️⃣ Cek setiap 1 detik
+    setInterval(detectDevTools, 1000);
+
+    // 3️⃣ Blokir klik kanan & shortcut
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.addEventListener('keydown', e => {
+        if (
+            e.key === 'F12' ||
+            (e.ctrlKey && e.shiftKey && ['I','J','C'].includes(e.key.toUpperCase())) ||
+            (e.ctrlKey && ['U','S'].includes(e.key.toUpperCase()))
+        ) {
+            e.preventDefault();
+            alert('❌ Akses dibatasi.');
+        }
+    });
+
+    // 4️⃣ Nonaktifkan copy, select, drag
+    ['copy','cut','paste','selectstart','dragstart'].forEach(evt =>
+        document.addEventListener(evt, e => e.preventDefault())
+    );
 })();
