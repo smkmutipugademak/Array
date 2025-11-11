@@ -173,3 +173,39 @@ fontSizeSelect.addEventListener("change", () => {
     localStorage.setItem("editorFontSize", newSize);
 });
 
+
+// 🔒 Nonaktifkan klik kanan
+document.addEventListener('contextmenu', event => event.preventDefault());
+
+// 🔒 Nonaktifkan kombinasi tombol inspect (F12, Ctrl+Shift+I, Ctrl+U, dll)
+document.addEventListener('keydown', function (e) {
+    if (
+        e.key === 'F12' ||
+        (e.ctrlKey && e.shiftKey && ['I', 'J', 'C'].includes(e.key.toUpperCase())) ||
+        (e.ctrlKey && ['U', 'S', 'C', 'A'].includes(e.key.toUpperCase()))
+    ) {
+        e.preventDefault();
+        e.stopPropagation();
+        alert("❌ Akses ini dibatasi demi keamanan praktikum.");
+    }
+});
+
+// 🔒 Nonaktifkan select, copy, paste, drag
+document.addEventListener('selectstart', e => e.preventDefault());
+document.addEventListener('copy', e => e.preventDefault());
+document.addEventListener('cut', e => e.preventDefault());
+document.addEventListener('paste', e => e.preventDefault());
+document.addEventListener('dragstart', e => e.preventDefault());
+
+// 🕵️‍♂️ Deteksi jika devtools dibuka
+(function detectDevTools() {
+    const threshold = 160;
+    const check = setInterval(() => {
+        const start = performance.now();
+        debugger;
+        if (performance.now() - start > threshold) {
+            alert("⚠️ Developer tools terdeteksi. Halaman akan dimuat ulang.");
+            location.reload();
+        }
+    }, 1000);
+})();
